@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/jackson-annotations-2.16.1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.16.1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-databind-2.16.1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-dataformat-xml-2.16.1.jar"/>
+	<classpathentry kind="lib" path="lib/stax2-api-4.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/woodstox-core-6.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jakarta.activation-api-2.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/jakarta.xml.bind-api-4.0.0 (2).jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-runtime-4.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-core-4.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/istack-commons-runtime-4.2.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

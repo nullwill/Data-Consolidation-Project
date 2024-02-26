@@ -1,0 +1,73 @@
+{
+  "stores" : [ {
+    "street" : "309 Bay Alley",
+    "city" : "Celica",
+    "state" : "AK",
+    "zip" : 938394,
+    "storeCode" : "3c0234",
+    "managerUuid" : "319e16a0-e1f7-4b33-b4d0-d987bf02969d"
+  }, {
+    "street" : "70345 Birchwood Trail",
+    "city" : "Carolina",
+    "state" : "KS",
+    "zip" : 751847,
+    "storeCode" : "2asdfd",
+    "managerUuid" : "30b45cf2-5161-4f60-a107-0f62ec14a924"
+  }, {
+    "street" : "19285 Talmadge Trail",
+    "city" : "San Jose",
+    "state" : "LS",
+    "zip" : 995643,
+    "storeCode" : "dd3241",
+    "managerUuid" : "95a086e2-6529-4a6f-a254-1c759d9e8654"
+  }, {
+    "street" : "769 Montana Alley",
+    "city" : "Kanal",
+    "state" : "FL",
+    "zip" : 635213,
+    "storeCode" : "abcd33",
+    "managerUuid" : "c1ddf173-ed89-4928-bea7-5472db1fa745"
+  }, {
+    "street" : "8583 David Circle",
+    "city" : "Richibucto",
+    "state" : "NJ",
+    "zip" : 748327,
+    "storeCode" : "092kkl",
+    "managerUuid" : "40c81fce-0e2a-4455-8529-c95b95693c9c"
+  }, {
+    "street" : "21 Mendota Street",
+    "city" : "Banpu",
+    "state" : "SD",
+    "zip" : 931899,
+    "storeCode" : "92kals2",
+    "managerUuid" : "3351a4ec-1fdb-45a3-ad1f-1fa1da14272f"
+  }, {
+    "street" : "22193 Morning Hill",
+    "city" : "Lincoln",
+    "state" : "ND",
+    "zip" : 745938,
+    "storeCode" : "02kjvv",
+    "managerUuid" : "328f5abf-3e27-47ad-8888-352af4590b14"
+  }, {
+    "street" : "0040 Iowa Street",
+    "city" : "Danville",
+    "state" : "WY",
+    "zip" : 647373,
+    "storeCode" : "kd20jf",
+    "managerUuid" : "83f2f328-0ff5-4096-9f1e-693615cb7c3a"
+  }, {
+    "street" : "9 Rowland Circle",
+    "city" : "Los Angeles",
+    "state" : "WI",
+    "zip" : 798620,
+    "storeCode" : "pa93js",
+    "managerUuid" : "eabca26a-de84-426d-aec8-8e223130c31d"
+  }, {
+    "street" : "07 Arizona Circle",
+    "city" : "Tokyo",
+    "state" : "MA",
+    "zip" : 512242,
+    "storeCode" : "002jfs",
+    "managerUuid" : "0f85dcb0-9fb9-43e1-b134-427a5d9aff3f"
+  } ]
+}

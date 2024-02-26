@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<items>
+  <item>
+    <code>q001</code>
+    <type>P</type>
+    <name>iPhone X</name>
+    <basePrice>255.61</basePrice>
+  </item>
+  <item>
+    <code>q002</code>
+    <type>S</type>
+    <name>Cracked screen repair</name>
+    <basePrice>295.89</basePrice>
+  </item>
+  <item>
+    <code>q003</code>
+    <type>D</type>
+    <name>Unlimited talk and text</name>
+    <basePrice>240.16</basePrice>
+  </item>
+  <item>
+    <code>a001</code>
+    <type>P</type>
+    <name>Samsung Galaxy S10</name>
+    <basePrice>372.62</basePrice>
+  </item>
+  <item>
+    <code>a002</code>
+    <type>S</type>
+    <name>LCD replacement</name>
+    <basePrice>245.1</basePrice>
+  </item>
+  <item>
+    <code>a003</code>
+    <type>D</type>
+    <name>2GB data plan</name>
+    <basePrice>74.99</basePrice>
+  </item>
+  <item>
+    <code>x001</code>
+    <type>P</type>
+    <name>Google Pixel 4</name>
+    <basePrice>230.29</basePrice>
+  </item>
+  <item>
+    <code>x002</code>
+    <type>S</type>
+    <name>Battery replacement</name>
+    <basePrice>470.94</basePrice>
+  </item>
+  <item>
+    <code>x003</code>
+    <type>D</type>
+    <name>Family plan</name>
+    <basePrice>340.02</basePrice>
+  </item>
+  <item>
+    <code>d001</code>
+    <type>P</type>
+    <name>iPhone 15</name>
+    <basePrice>185.58</basePrice>
+  </item>
+</items>
+
