@@ -226,21 +226,5 @@ public class DataConverter {
 		persistXml(people, "person", personsXml);
 		persistXml(stores, "store", storesXml);
 		persistXml(items, "item", itemsXml);
-		
-		List<String> email = new ArrayList<>();
-		email.add("williamaldag03@gmail.com");
-		email.add("waldag2@huskers.unl.edu");
-		email.add("aldagwilliam@gmail.com");
-		
-		Person will = new Person("e3734f8c-7b43-4684-c301-904e7b1e36e2","Will", "Aldag",
-				"2690 Colonial Drive", "Lincoln", "NE", 68502, email);
-		
-		try {
-			JAXBContext context = JAXBContext.newInstance(Person.class);
-			Marshaller marshaller = context.createMarshaller();
-			marshaller.marshal(will, new File("data/will.xml"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }
