@@ -9,7 +9,6 @@ William Aldag
 ->81027530
 
 Oliver Triana
-hi
 
 ->otrianagutierrez2@unl.edu
 
