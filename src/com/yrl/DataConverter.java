@@ -1,22 +1,17 @@
 package com.yrl;
 
-import java.util.Scanner;
-import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.dataformat.xml.*;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-//import javax.xml.bind.*;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.Marshaller;
-
 
 /**
  * Author(s): Will Aldag & Oliver Triana
@@ -27,108 +22,6 @@ import jakarta.xml.bind.Marshaller;
  */
 
 public class DataConverter {
-		
-	/**
-	 * This method loads specifically the Person CSV formatted data
-	 * and returns a list of "Person"s.
-	 * 
-	 * @param filename
-	 * @return
-	 */
-	public static List<Person> loadPersonData(String filename) {
-		List<Person> people = new ArrayList<>();
-		
-		File f = new File(filename);
-		Scanner s;
-		try {
-			s = new Scanner(f);
-			// Skip over first line
-			s.nextLine();
-			while (s.hasNextLine()) {
-				List<String> email = new ArrayList<>();
-				String line = s.nextLine();
-				String tokens[] = line.split(",");
-				if (tokens.length >= 8) {
-					for (int i = 7; i < tokens.length; i++) {
-						email.add(tokens[i]);
-					}
-					Person p = new Person(tokens[0], tokens[1], tokens[2], tokens[3],
-							tokens[4], tokens[5], Integer.parseInt(tokens[6]), email);
-					people.add(p);
-				}
-			}
-			s.close();
-		} catch (FileNotFoundException e){
-			throw new RuntimeException(e);
-		}
-		
-		return people;
-	}
-	/**
-	 * This method loads specifically the Store CSV formatted data
-	 * and returns a list of "Store"s.
-	 * 
-	 * @param filename
-	 * @return
-	 */
-	public static List<Store> loadStoreData(String filename) {
-		List<Store> stores = new ArrayList<>();
-		
-		File f = new File(filename);
-		Scanner s;
-		try {
-			s = new Scanner(f);
-			// Skip over first line
-			s.nextLine();
-			while (s.hasNextLine()) {
-				String line = s.nextLine();
-				String tokens[] = line.split(",");
-				if (tokens.length == 6) {
-					Store st = new Store(tokens[0], tokens[1], tokens[2],
-							tokens[3], tokens[4], Integer.parseInt(tokens[5]));
-					stores.add(st);
-				}
-			} 
-			s.close();
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		}
-		
-		return stores;
-	}
-	
-	/**
-	 * This method loads specifically the Item CSV formatted data
-	 * and returns a list of "Item"s.
-	 * 
-	 * @param filename
-	 * @return
-	 */
-	
-	public static List<Items> loadItemsData(String filename) {
-		List<Items> items = new ArrayList<>();
-		
-		File f = new File(filename);
-		Scanner s;
-		try {
-			s = new Scanner(f);
-			// Skip over first line
-			s.nextLine();
-			while (s.hasNextLine()) {
-				String line = s.nextLine();
-				String tokens[] = line.split(",");
-				if (tokens.length == 4) {
-					Items i = new Items(tokens[0], tokens[1].charAt(0), tokens[2], Double.parseDouble(tokens[3]));
-					items.add(i);
-				}
-			} 
-			s.close();
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		}
-		
-		return items;
-	}
 	
 	/**
 	 * This method is a general method to persist the object data and output
@@ -215,9 +108,9 @@ public class DataConverter {
 		String storesXml  = "data/Stores.xml";
 		String itemsXml   = "data/Items.xml";
 		
-		List<Person> people = loadPersonData(personsFile);
-		List<Store> stores  = loadStoreData(storesFile);
-		List<Items> items   = loadItemsData(itemsFile);
+		List<Person> people = DataLoader.loadPersonData(personsFile);
+		List<Store> stores  = DataLoader.loadStoreData(storesFile);
+		List<Items> items   = DataLoader.loadItemsData(itemsFile);
 		
 		persistJson(people, "persons", personsJson);
 		persistJson(stores, "stores", storesJson);
@@ -226,5 +119,13 @@ public class DataConverter {
 		persistXml(people, "person", personsXml);
 		persistXml(stores, "store", storesXml);
 		persistXml(items, "item", itemsXml);
+		
+		Address a = new Address("308 Negro Arroyo Lane", "Albuquerque", "NM", 88490);
+		List<String> email = new ArrayList<>();
+		
+		Person walt = new Person("43928503", "Walter", "White", a, email);
+		
+		System.out.println(walt.getEmails());
+		
 	}
 }

@@ -2,27 +2,30 @@ package com.yrl;
 
 public class Store extends Address {
 	private String storeCode;
-	private String managerUuid;
+	private Person manager;
+	private Address address;
+	private Sales sales;
 	
-	public Store(String storeCode, String managerUuid, String street, String state, String city, Integer zip) {
-		super(street, state, city, zip);
+	public Store(String storeCode, Person manager, Address address, Sales sales) {
 		this.storeCode = storeCode;
-		this.managerUuid = managerUuid;
+		this.manager = manager;
+		this.address = address;
+		this.sales = sales;
 	}
 
 	public String getStoreCode() {
 		return storeCode;
 	}
-
-	public void setStoreCode(String storeCode) {
-		this.storeCode = storeCode;
+	
+	public Person getManager() {
+		return manager;
 	}
-
-	public String getManagerUuid() {
-		return managerUuid;
+	
+	public Address getAddress() {
+		return address;
 	}
-
-	public void setManagerUuid(String managerUuid) {
-		this.managerUuid = managerUuid;
+	
+	public Sales getSales() {
+		return sales;
 	}
 }
