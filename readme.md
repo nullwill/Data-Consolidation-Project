@@ -10,6 +10,6 @@ William Aldag
 
 Oliver Triana
 
-->otrianagutierrez2@unl.edu
+->otrianagutierrez2@huskers.unl.edu
 
 ->61922052
