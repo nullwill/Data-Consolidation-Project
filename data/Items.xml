@@ -1,64 +1,53 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<items>
+<SingletonList>
   <item>
-    <code>q001</code>
-    <type>P</type>
+    <itemCode>q001</itemCode>
     <name>iPhone X</name>
-    <basePrice>255.61</basePrice>
+    <price>255.61</price>
   </item>
   <item>
-    <code>q002</code>
-    <type>S</type>
-    <name>Cracked screen repair</name>
-    <basePrice>295.89</basePrice>
-  </item>
-  <item>
-    <code>q003</code>
-    <type>D</type>
-    <name>Unlimited talk and text</name>
-    <basePrice>240.16</basePrice>
-  </item>
-  <item>
-    <code>a001</code>
-    <type>P</type>
+    <itemCode>a001</itemCode>
     <name>Samsung Galaxy S10</name>
-    <basePrice>372.62</basePrice>
+    <price>372.62</price>
   </item>
   <item>
-    <code>a002</code>
-    <type>S</type>
-    <name>LCD replacement</name>
-    <basePrice>245.1</basePrice>
-  </item>
-  <item>
-    <code>a003</code>
-    <type>D</type>
-    <name>2GB data plan</name>
-    <basePrice>74.99</basePrice>
-  </item>
-  <item>
-    <code>x001</code>
-    <type>P</type>
+    <itemCode>x001</itemCode>
     <name>Google Pixel 4</name>
-    <basePrice>230.29</basePrice>
+    <price>230.29</price>
   </item>
   <item>
-    <code>x002</code>
-    <type>S</type>
-    <name>Battery replacement</name>
-    <basePrice>470.94</basePrice>
-  </item>
-  <item>
-    <code>x003</code>
-    <type>D</type>
-    <name>Family plan</name>
-    <basePrice>340.02</basePrice>
-  </item>
-  <item>
-    <code>d001</code>
-    <type>P</type>
+    <itemCode>d001</itemCode>
     <name>iPhone 15</name>
-    <basePrice>185.58</basePrice>
+    <price>185.58</price>
   </item>
-</items>
-
+  <item>
+    <itemCode>q002</itemCode>
+    <name>Cracked screen repair</name>
+    <costPerHour>295.89</costPerHour>
+  </item>
+  <item>
+    <itemCode>a002</itemCode>
+    <name>LCD replacement</name>
+    <costPerHour>245.1</costPerHour>
+  </item>
+  <item>
+    <itemCode>x002</itemCode>
+    <name>Battery replacement</name>
+    <costPerHour>470.94</costPerHour>
+  </item>
+  <item>
+    <itemCode>q003</itemCode>
+    <name>Unlimited talk and text</name>
+    <periodCost>240.16</periodCost>
+  </item>
+  <item>
+    <itemCode>a003</itemCode>
+    <name>2GB data plan</name>
+    <costPerGB>74.99</costPerGB>
+  </item>
+  <item>
+    <itemCode>x003</itemCode>
+    <name>Family plan</name>
+    <costPerGB>340.02</costPerGB>
+  </item>
+</SingletonList>

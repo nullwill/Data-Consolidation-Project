@@ -1,0 +1,7 @@
++----------------------------------------------------------------------------------------+
+| Summary Report - By Total                                                              |
++----------------------------------------------------------------------------------------+
+Invoice #  Store      Customer                       Num Items          Tax       Total
+q001       abcd33     Ballaam, Roanna
+x003       abcd33     Ballaam, Roanna
+a002       002jfs     Burman, Gennie

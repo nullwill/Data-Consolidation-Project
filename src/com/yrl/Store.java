@@ -1,12 +1,14 @@
 package com.yrl;
 
-public class Store extends Address {
+import java.util.List;
+
+public class Store {
 	private String storeCode;
-	private Person manager;
+	private Manager manager;
 	private Address address;
-	private Sales sales;
+	private List<Sale> sales;
 	
-	public Store(String storeCode, Person manager, Address address, Sales sales) {
+	public Store(String storeCode, Manager manager, Address address, List<Sale> sales) {
 		this.storeCode = storeCode;
 		this.manager = manager;
 		this.address = address;
@@ -17,7 +19,7 @@ public class Store extends Address {
 		return storeCode;
 	}
 	
-	public Person getManager() {
+	public Manager getManager() {
 		return manager;
 	}
 	
@@ -25,7 +27,7 @@ public class Store extends Address {
 		return address;
 	}
 	
-	public Sales getSales() {
+	public List<Sale> getSales() {
 		return sales;
 	}
 }

@@ -2,12 +2,16 @@ package com.yrl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.exc.StreamWriteException;
+import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -47,7 +51,7 @@ public class DataConverter {
 			
 			try {
 				String json = mapper.writeValueAsString(map);
-				pw.println(json);
+				System.out.println(json);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
@@ -71,21 +75,19 @@ public class DataConverter {
 		PrintWriter pw;
 		try {
 			pw = new PrintWriter(f);
-			XmlMapper mapper = XmlMapper.builder()
-					.defaultUseWrapper(false)
+			XmlMapper mapper = XmlMapper
+					.builder()
+					.defaultUseWrapper(true)
 					.build();
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
-			mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-			Map<String, List<?>> map = new HashMap<>();
-			map.put(root, list);
-			
-			
+			mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);			
 			try {
-				pw.println(mapper
-						.writer()
-						.withRootName(root + "s")
-						.writeValueAsString(map));
-			} catch (JsonProcessingException e) {
+				mapper.writeValue(f, list);
+			} catch (StreamWriteException e) {
+				e.printStackTrace();
+			} catch (DatabindException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
@@ -98,34 +100,27 @@ public class DataConverter {
 	public static void main(String args[]) {
 		String personsFile = "data/Persons.csv";
 		String storesFile  = "data/Stores.csv";
-		String itemsFile   = "data/Items.csv";
+		String itemFile   = "data/Items.csv";
 		
 		String personsJson = "data/Persons.json";
 		String storesJson  = "data/Stores.json";
-		String itemsJson   = "data/Items.json";
+		String itemJson   = "data/Items.json";
 		
 		String personsXml = "data/Persons.xml";
 		String storesXml  = "data/Stores.xml";
-		String itemsXml   = "data/Items.xml";
+		String itemXml   = "data/Items.xml";
 		
 		List<Person> people = DataLoader.loadPersonData(personsFile);
-		List<Store> stores  = DataLoader.loadStoreData(storesFile);
-		List<Items> items   = DataLoader.loadItemsData(itemsFile);
+		List<Store> stores  = DataLoader.loadStoreData(storesFile, people);
+		List<?> items   = DataLoader.loadItemData(itemFile);
 		
-		persistJson(people, "persons", personsJson);
-		persistJson(stores, "stores", storesJson);
-		persistJson(items, "items", itemsJson);
+//		persistJson(people, "persons", personsJson);
+//		persistJson(stores, "stores", storesJson);
+		persistJson(items, "items", itemJson);
 		
-		persistXml(people, "person", personsXml);
-		persistXml(stores, "store", storesXml);
-		persistXml(items, "item", itemsXml);
-		
-		Address a = new Address("308 Negro Arroyo Lane", "Albuquerque", "NM", 88490);
-		List<String> email = new ArrayList<>();
-		
-		Person walt = new Person("43928503", "Walter", "White", a, email);
-		
-		System.out.println(walt.getEmails());
+//		persistXml(people, "person", personsXml);
+//		persistXml(stores, "store", storesXml);
+		persistXml(items, "item", itemXml);
 		
 	}
 }

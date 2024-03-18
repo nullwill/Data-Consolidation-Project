@@ -1,16 +1,11 @@
 package com.yrl;
 
+import java.util.Comparator;
 import java.util.List;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
 	private String uuid;
 	private String firstName;
@@ -51,4 +46,15 @@ public class Person {
 	public Address getAddress() {
 		return address;
 	}
+	
+	public String getName() {
+		return lastName + ", " + firstName;
+	}
+	
+	static Comparator<Person> cmpByUuid = new Comparator<Person>() {
+		public int compare(Person a, Person b) {
+			return a.getUuid().compareTo(b.getUuid());
+		}
+	};
+	
 }
