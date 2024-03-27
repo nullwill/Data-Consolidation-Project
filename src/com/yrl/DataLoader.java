@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-
+import java.util.HashMap;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -75,11 +75,11 @@ public class DataLoader {
 				String tokens[] = line.split(",");
 				if (tokens.length == 6) {
 					Collections.sort(people, Person.cmpByUuid);
-					Person key = new Manager(tokens[1], "", "", null, null);
+					Person key = new Person(tokens[1], "", "", null, null);
 					Address a = new Address(tokens[2], tokens[3], tokens[4], Integer.parseInt(tokens[5]));
 					int index = Collections.binarySearch(people, key, Person.cmpByUuid);
 					Person p = people.get(index);
-					Manager m = new Manager(p.getUuid(), p.getFirstName(), p.getLastName(), p.getAddress(),
+					Person m = new Person(p.getUuid(), p.getFirstName(), p.getLastName(), p.getAddress(),
 							p.getEmails());
 
 					List<Sale> sales = new ArrayList<>();
@@ -103,18 +103,9 @@ public class DataLoader {
 	 * @return
 	 */
 
-	public static List<List<?>> loadItemData(String filename) {
-		List<List<?>> items = new ArrayList<>();
-
-		List<Product> products = new ArrayList<>();
-		List<Service> services = new ArrayList<>();
-		List<VoicePlan> voicePlans = new ArrayList<>();
-		List<DataPlan> dataPlans = new ArrayList<>();
-
-		items.add(products);
-		items.add(services);
-		items.add(voicePlans);
-		items.add(dataPlans);
+	public static HashMap<String, Item> loadItemData(String filename) {
+//		List<Item> items = new ArrayList<>();
+		HashMap<String, Item> items = new HashMap<String, Item>();
 
 		File f = new File(filename);
 		Scanner s;
@@ -128,20 +119,20 @@ public class DataLoader {
 					char c = tokens[1].charAt(0);
 					switch (c) {
 					case 'P':
-						Product p = new Product("", tokens[0], tokens[2], Double.parseDouble(tokens[3]));
-						products.add(p);
+						Product p = new Product(tokens[0], tokens[2], Double.parseDouble(tokens[3]));
+						items.put(tokens[0], p);
 						break;
 					case 'S':
-						Service a = new Service("", tokens[0], tokens[2], Double.parseDouble(tokens[3]), 0.0, "");
-						services.add(a);
+						Service a = new Service(tokens[0], tokens[2], Double.parseDouble(tokens[3]), 0.0, "");
+						items.put(tokens[0], a);
 						break;
 					case 'V':
-						VoicePlan v = new VoicePlan("", tokens[0], tokens[2], Double.parseDouble(tokens[3]), "", 0.0);
-						voicePlans.add(v);
+						VoicePlan v = new VoicePlan(tokens[0], tokens[2], Double.parseDouble(tokens[3]), "", 0.0);
+						items.put(tokens[0], v);
 						break;
 					case 'D':
-						DataPlan d = new DataPlan("", tokens[0], tokens[2], Double.parseDouble(tokens[3]), 0.0);
-						dataPlans.add(d);
+						DataPlan d = new DataPlan(tokens[0], tokens[2], Double.parseDouble(tokens[3]), 0.0);
+						items.put(tokens[0], d);
 						break;
 					}
 				}
@@ -173,7 +164,7 @@ public class DataLoader {
 				String line = s.nextLine();
 				String tokens[] = line.split(",");
 				if (tokens.length == 5) {
-					Sale sa = new Sale(tokens[0], tokens[1], tokens[2], tokens[3], LocalDate.parse(tokens[4]));
+					Sale sa = new Sale(tokens[0], tokens[1], tokens[2], tokens[3], LocalDate.parse(tokens[4]), null);
 					sales.add(sa);
 				}
 			}
@@ -185,14 +176,9 @@ public class DataLoader {
 		return sales;
 	}
 
-	public static List<List<?>> loadSaleItemsData(String filename, List<List<?>> items, List<Sale> sales) {
-		List<List<?>> soldItems = new ArrayList<>();
-
-		List<Leased> leasedProducts = new ArrayList<>();
-		List<Purchased> purchasedProducts = new ArrayList<>();
-		List<Service> services = new ArrayList<>();
-		List<VoicePlan> voicePlans = new ArrayList<>();
-		List<DataPlan> dataPlans = new ArrayList<>();
+	public static HashMap<String, List<Item>> loadSaleItemsData(String filename, HashMap<String, Item> items,
+			List<Sale> sales) {
+		HashMap<String, List<Item>> saleItems = new HashMap<String, List<Item>>();
 
 		File f = new File(filename);
 		Scanner s;
@@ -202,77 +188,53 @@ public class DataLoader {
 			while (s.hasNextLine()) {
 				String line = s.nextLine();
 				String tokens[] = line.split(",");
-				switch (tokens[1].charAt(0)) {
-				case 'e':
-					Product key = new Product("", tokens[1], "", 0.0);
-					List<?> list = items.get(0);
 
-					if (list instanceof List<?>) {
-						@SuppressWarnings("unchecked")
-						List<Product> products = (List<Product>) list;
-						Collections.sort(products, Product.cmpByItemCode);
-						int index = Collections.binarySearch(products, key, Product.cmpByItemCode);
-						Product p = products.get(index);
+				if (tokens.length >= 2) {
+					Item i = items.get(tokens[1]);
+					if (i instanceof Product) {
+						Product p = (Product) i;
 						if (tokens.length == 4) {
-							Leased l = new Leased(tokens[0], p.getItemCode(), p.getName(), p.getPrice(),
+							Leased l = new Leased(p.getItemCode(), p.getName(), p.getPrice(),
 									LocalDate.parse(tokens[2]), LocalDate.parse(tokens[3]));
-							leasedProducts.add(l);
+							addToMap(saleItems, tokens[0], l);
 						} else {
-							Purchased pu = new Purchased(tokens[0], p.getItemCode(), p.getName(), p.getPrice());
-							purchasedProducts.add(pu);
+							Purchased pu = new Purchased(p.getItemCode(), p.getName(), p.getPrice());
+							addToMap(saleItems, tokens[0], pu);
 						}
+					} else if (i instanceof Service) {
+						Service se = (Service) i;
+						Service service = new Service(se.getItemCode(), se.getName(), se.getCostPerHour(),
+								Double.parseDouble(tokens[2]), tokens[3]);
+						addToMap(saleItems, tokens[0], service);
+					} else if (i instanceof DataPlan) {
+						DataPlan d = (DataPlan) i;
+						DataPlan dp = new DataPlan(d.getItemCode(), d.getName(), d.getCostPerGB(),
+								Double.parseDouble(tokens[2]));
+						addToMap(saleItems, tokens[0], dp);
+					} else if (i instanceof VoicePlan) {
+						VoicePlan v = (VoicePlan) i;
+						VoicePlan vp = new VoicePlan(v.getItemCode(), v.getName(), v.getPeriodCost(), tokens[2],
+								Double.parseDouble(tokens[3]));
+						addToMap(saleItems, tokens[0], vp);
 					}
-					break;
-				case 's':
-					Service key1 = new Service("", tokens[1], "", 0.0, 0.0, "");
-					list = items.get(1);
-
-					if (list instanceof List<?>) {
-						@SuppressWarnings("unchecked")
-						List<Service> serv = (List<Service>) list;
-						Collections.sort(serv, Service.cmpByItemCode);
-						int index = Collections.binarySearch(serv, key1, Service.cmpByItemCode);
-						Service se = serv.get(index);
-						Service newService = new Service(tokens[0], se.getItemCode(), se.getName(),
-								se.getCostPerHour(), Double.parseDouble(tokens[2]), tokens[3]);
-						services.add(newService);
-					}
-					break;
-				case 'p':
-					if (tokens.length == 2) {
-						VoicePlan key2 = new VoicePlan("", tokens[1], "", 0.0, "", 0.0);
-						list = items.get(2);
-						if (list instanceof List<?>) {
-							@SuppressWarnings("unchecked")
-							List<VoicePlan> vp = (List<VoicePlan>) list;
-							Collections.sort(vp, VoicePlan.cmpByItemCode);
-							int index = Collections.binarySearch(vp, key2, VoicePlan.cmpByItemCode);
-							VoicePlan v = vp.get(index);
-							VoicePlan newVp = new VoicePlan(tokens[0], v.getItemCode(), v.getName(), v.getPeriodCost(), tokens[2], Double.parseDouble(tokens[3]));
-							voicePlans.add(newVp);
-						}
-					} else {
-						DataPlan key3 = new DataPlan("", tokens[1], "", 0.0, 0.0);
-						list = items.get(3);
-						if (list instanceof List<?>) {
-							@SuppressWarnings("unchecked")
-							List<DataPlan> dp = (List<DataPlan>) list;
-							Collections.sort(dp, DataPlan.cmpByItemCode);
-							int index = Collections.binarySearch(dp, key3, DataPlan.cmpByItemCode);
-							DataPlan d = dp.get(index);
-							DataPlan newDp = new DataPlan(tokens[0], d.getItemCode(), d.getName(), d.getCostPerGB(), Double.parseDouble(tokens[2]));
-							dataPlans.add(newDp);
-						}
-					}
-
 				}
-					
-				s.close();
 			}
+			s.close();
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
 
-		return soldItems;
+		return saleItems;
+	}
+
+	public static void addToMap(HashMap<String, List<Item>> map, String key, Item i) {
+		if (map.containsKey(key)) {
+			List<Item> itemList = map.get(key);
+			itemList.add(i);
+		} else {
+			List<Item> newList = new ArrayList<>();
+			newList.add(i);
+			map.put(key, newList);
+		}
 	}
 }

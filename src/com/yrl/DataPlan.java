@@ -3,8 +3,6 @@ package com.yrl;
 import java.util.Comparator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonRootName;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 @JacksonXmlRootElement(localName = "dataPlan")
@@ -13,8 +11,8 @@ public class DataPlan extends Item {
 	private Double GbPurchased;
 	private static final char TYPE = 'D';
 
-	public DataPlan(String storeCode, String itemCode, String name, Double costPerGB, Double GbPurchased) {
-		super(storeCode, itemCode, name);
+	public DataPlan(String itemCode, String name, Double costPerGB, Double GbPurchased) {
+		super(itemCode, name);
 		this.costPerGB = costPerGB;
 		this.GbPurchased = GbPurchased;
 	}
@@ -36,7 +34,7 @@ public class DataPlan extends Item {
 	@JsonIgnore
 	@Override
 	public Double getTaxes() {
-		return this.getGrossTotal() * 0.055;
+		return (double) Math.round(this.getGrossTotal() * 5.5) / 100;
 	}
 	
 	@JsonIgnore
@@ -56,5 +54,10 @@ public class DataPlan extends Item {
 			return a.getItemCode().compareTo(b.getItemCode());
 		}
 	};
+
+	@Override
+	public Double getPreTaxTotal() {
+		return this.getGrossTotal();
+	}
 
 }

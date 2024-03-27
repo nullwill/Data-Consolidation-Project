@@ -2,13 +2,13 @@ package com.yrl;
 
 public class Purchased extends Product{
 
-	public Purchased(String storeCode, String itemCode, String name, Double price) {
-		super(storeCode, itemCode, name, price);
+	public Purchased(String itemCode, String name, Double price) {
+		super(itemCode, name, price);
 	}
 
 	@Override
 	public Double getTaxes() {
-		return this.getPrice() * .065;
+		return (double) Math.round(this.getGrossTotal() * 6.5) / 100;
 	}
 	
 	@Override
@@ -19,6 +19,10 @@ public class Purchased extends Product{
 	@Override
 	public Double getNetTotal() {
 		return this.getGrossTotal() + this.getTaxes();
+	}
+	
+	public Double getPreTaxTotal() {
+		return this.getGrossTotal();
 	}
 
 }

@@ -11,10 +11,9 @@ public class Service extends Item {
 	private Double costPerHour;
 	private Double hoursBilled;
 	private String employeeUuid;
-	private static final char TYPE = 'S';
 
-	public Service(String storeCode, String itemCode, String name, Double costPerHour, Double hoursBilled, String employeeUuid) {
-		super(storeCode, itemCode, name);
+	public Service(String itemCode, String name, Double costPerHour, Double hoursBilled, String employeeUuid) {
+		super(itemCode, name);
 		this.costPerHour = costPerHour;
 		this.hoursBilled = hoursBilled;
 		this.employeeUuid = employeeUuid;
@@ -29,9 +28,6 @@ public class Service extends Item {
 		return costPerHour;
 	}
 
-	public static char getType() {
-		return TYPE;
-	}
 	
 	@JsonIgnore
 	public String getEmployeeUuid() {
@@ -40,7 +36,7 @@ public class Service extends Item {
 	
 	@Override
 	public Double getTaxes() {
-		return this.getGrossTotal() * 0.035;
+		return (double) Math.round(this.getGrossTotal() * 3.5) / 100;
 	}
 	
 	@Override
@@ -58,4 +54,9 @@ public class Service extends Item {
 			return a.getItemCode().compareTo(b.getItemCode());
 		}
 	};
+
+	@Override
+	public Double getPreTaxTotal() {
+		return this.getGrossTotal();
+	}
 }

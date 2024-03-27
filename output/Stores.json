@@ -1,0 +1,113 @@
+{
+  "stores" : [ {
+    "storeCode" : "3c0234",
+    "manager" : {
+      "uuid" : "a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7",
+      "firstName" : "Bety",
+      "lastName" : "Grof",
+      "emails" : [ "bgrof@gmail.com", "bgrof2@unl.edu" ],
+      "address" : {
+        "street" : "7233 Jenna Road",
+        "city" : "Migrate",
+        "state" : "KY",
+        "zip" : 41905
+      },
+      "name" : "Grof, Bety"
+    },
+    "address" : {
+      "street" : "123 Cornhusker Way",
+      "city" : "Lincoln",
+      "state" : "NE",
+      "zip" : 68508
+    },
+    "sales" : [ ]
+  }, {
+    "storeCode" : "9f352c",
+    "manager" : {
+      "uuid" : "fdce2d71-7a42-42c8-b6a3-53dad5d21194",
+      "firstName" : "Marshall",
+      "lastName" : "Lee",
+      "emails" : [ "mlee@nightosphere.com" ],
+      "address" : {
+        "street" : "4 Mcguire Drive",
+        "city" : "Austin",
+        "state" : "TX",
+        "zip" : 78715
+      },
+      "name" : "Lee, Marshall"
+    },
+    "address" : {
+      "street" : "4242 A Street",
+      "city" : "Omaha",
+      "state" : "NE",
+      "zip" : 68117
+    },
+    "sales" : [ ]
+  }, {
+    "storeCode" : "73668b",
+    "manager" : {
+      "uuid" : "a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7",
+      "firstName" : "Bety",
+      "lastName" : "Grof",
+      "emails" : [ "bgrof@gmail.com", "bgrof2@unl.edu" ],
+      "address" : {
+        "street" : "7233 Jenna Road",
+        "city" : "Migrate",
+        "state" : "KY",
+        "zip" : 41905
+      },
+      "name" : "Grof, Bety"
+    },
+    "address" : {
+      "street" : "RR9901",
+      "city" : "Mead",
+      "state" : "NE",
+      "zip" : 61234
+    },
+    "sales" : [ ]
+  }, {
+    "storeCode" : "96f2cf",
+    "manager" : {
+      "uuid" : "a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7",
+      "firstName" : "Bety",
+      "lastName" : "Grof",
+      "emails" : [ "bgrof@gmail.com", "bgrof2@unl.edu" ],
+      "address" : {
+        "street" : "7233 Jenna Road",
+        "city" : "Migrate",
+        "state" : "KY",
+        "zip" : 41905
+      },
+      "name" : "Grof, Bety"
+    },
+    "address" : {
+      "street" : "452 13th Street",
+      "city" : "Hastings",
+      "state" : "NE",
+      "zip" : 68901
+    },
+    "sales" : [ ]
+  }, {
+    "storeCode" : "25d901",
+    "manager" : {
+      "uuid" : "d2e84b16-b74e-4c28-90fc-585a3ec2a35e",
+      "firstName" : "Bonnibel",
+      "lastName" : "Bubblegum",
+      "emails" : [ "pbubbs@ooo.com" ],
+      "address" : {
+        "street" : "9 Marquette Point",
+        "city" : "Pensacola",
+        "state" : "FL",
+        "zip" : 32505
+      },
+      "name" : "Bubblegum, Bonnibel"
+    },
+    "address" : {
+      "street" : "180 Magdeline Plaza",
+      "city" : "Wichita",
+      "state" : "KS",
+      "zip" : 67230
+    },
+    "sales" : [ ]
+  } ]
+}

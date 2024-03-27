@@ -1,11 +1,11 @@
-code,type,name,baseCost
-q001,P,iPhone X,255.61
-q002,S,Cracked screen repair,295.89
-q003,V,Unlimited talk and text,240.16
-a001,P,Samsung Galaxy S10,372.62
-a002,S,LCD replacement,245.1
-a003,D,2GB data plan,74.99
-x001,P,Google Pixel 4,230.29
-x002,S,Battery replacement,470.94
-x003,D,Family plan,340.02
-d001,P,iPhone 15,185.58
+code,type,name,base cost
+e001,P,iPhone 11,1200
+e002,P,Samsung Galaxy A21,99.99
+e003,P,iPhone 11 hardcase,34.95
+s001,S,Screen Repair,75.50
+s002,S,Router Install,120.99
+s003,S,Delivery,59.99
+p001,D,5G Deluxe,1.99
+p002,D,4G Basic,0.43
+p003,V,Unlimited Daily,50
+p004,V,Unlimited talk/300 Text,70

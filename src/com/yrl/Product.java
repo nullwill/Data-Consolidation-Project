@@ -7,19 +7,14 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 @JacksonXmlRootElement(localName = "product")
 public class Product extends Item {
 	private Double price;
-	private static final char TYPE = 'P';
 	
-	public Product(String storeCode, String itemCode, String name, Double price) {
-		super(storeCode, itemCode, name);
+	public Product(String itemCode, String name, Double price) {
+		super(itemCode, name);
 		this.price = price;
 	}
 
 	public Double getPrice() {
 		return this.price;
-	}
-
-	public static char getType() {
-		return TYPE;
 	}
 
 	@Override
@@ -42,5 +37,10 @@ public class Product extends Item {
 			return a.getItemCode().compareTo(b.getItemCode());
 		}
 	};
+
+	@Override
+	public Double getPreTaxTotal() {
+		return null;
+	}
 
 }

@@ -12,11 +12,9 @@ public class VoicePlan extends Item {
 	private String phoneNumber;
 	@JsonIgnore
 	private Double days;
-	@JsonIgnore
-	private static final char TYPE = 'V';
-
-	public VoicePlan(String storeCode, String itemCode, String name, Double periodCost, String phoneNumber, Double days) {
-		super(storeCode, itemCode, name);
+	
+	public VoicePlan(String itemCode, String name, Double periodCost, String phoneNumber, Double days) {
+		super(itemCode, name);
 		this.periodCost = periodCost;
 		this.days = days;
 		this.phoneNumber = phoneNumber;
@@ -24,10 +22,6 @@ public class VoicePlan extends Item {
 	
 	public Double getPeriodCost() {
 		return this.periodCost;
-	}
-
-	public static char getType() {
-		return TYPE;
 	}
 
 	public String getPhoneNumber() {
@@ -51,7 +45,7 @@ public class VoicePlan extends Item {
 	
 	@Override
 	public Double getTaxes() {
-		return this.getGrossTotal() * periodCost * 0.065;
+		return (double) Math.round(this.getGrossTotal() * 6.5) / 100;
 	}
 
 	static Comparator<VoicePlan> cmpByItemCode = new Comparator<VoicePlan>() {
@@ -59,4 +53,9 @@ public class VoicePlan extends Item {
 			return a.getItemCode().compareTo(b.getItemCode());
 		}
 	};
+
+	@Override
+	public Double getPreTaxTotal() {
+		return this.getGrossTotal();
+	}
 }

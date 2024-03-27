@@ -2,13 +2,13 @@ package com.yrl;
 
 import java.util.List;
 
-public class Store {
+public class Store implements Comparable<Store>{
 	private String storeCode;
-	private Manager manager;
+	private Person manager;
 	private Address address;
 	private List<Sale> sales;
 	
-	public Store(String storeCode, Manager manager, Address address, List<Sale> sales) {
+	public Store(String storeCode, Person manager, Address address, List<Sale> sales) {
 		this.storeCode = storeCode;
 		this.manager = manager;
 		this.address = address;
@@ -19,7 +19,7 @@ public class Store {
 		return storeCode;
 	}
 	
-	public Manager getManager() {
+	public Person getManager() {
 		return manager;
 	}
 	
@@ -29,5 +29,11 @@ public class Store {
 	
 	public List<Sale> getSales() {
 		return sales;
+	}
+	
+
+	@Override
+	public int compareTo(Store o) {
+		return this.manager.getLastName().compareTo(o.manager.getLastName());
 	}
 }

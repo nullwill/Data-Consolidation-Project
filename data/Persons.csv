@@ -1,11 +1,11 @@
-uuid,firstName,lastName,street,city,state,email(s)
-319e16a0-e1f7-4b33-b4d0-d987bf02969d,Roanna,Ballaam,935 Parkside Hill,Sainte-Marthe-sur-le-Lac,KS,67120,rballaam0@ebay.com
-30b45cf2-5161-4f60-a107-0f62ec14a924,Gennie,Burman,65 Evergreen Junction,Dul’durga,AK,687200,gburman1@hatena.ne.jp
-95a086e2-6529-4a6f-a254-1c759d9e8654,Alon,Reilly,13 Susan Place,Jianqiao,NY,649382,"areilly2@people.com.cn, idontwanttodothis@gmail.com"
-c1ddf173-ed89-4928-bea7-5472db1fa745,Miles,Ferreres,5 Cardinal Parkway,Heshui,LS,234948,mferreres3@netvibes.com
-40c81fce-0e2a-4455-8529-c95b95693c9c,Byrann,Jovicic,42810 Fulton Street,Plato,NE,475038,bjovicic4@princeton.edu
-3351a4ec-1fdb-45a3-ad1f-1fa1da14272f,Tremaine,Cahill,25697 Arapahoe Court,Nanggorak,OH,928374,"tcahill5@apache.org, thisisboring@boring.com"
-328f5abf-3e27-47ad-8888-352af4590b14,Locke,Reolfi,25664 Granby Parkway,Liulin,CA,748373,lreolfi6@etsy.com
-83f2f328-0ff5-4096-9f1e-693615cb7c3a,Niel,Rameau,305 Sommers Circle,Vrdy,TX,285471,nrameau7@tripadvisor.com
-eabca26a-de84-426d-aec8-8e223130c31d,Findley,Paireman,58781 Tennyson Parkway,Santa,KY,984933,"fpaireman8@indiegogo.com, whoeverreadsthisisaloser@ohno.com"
-0f85dcb0-9fb9-43e1-b134-427a5d9aff3f,Berty,Espinay,561 Evergreen Junction,Kumbo,NJ,19349,bespinay9@netvibes.com
+uuid,firstName,lastName,street,city,state,zip,email(s)
+a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7,Bety,Grof,7233 Jenna Road,Migrate,KY,41905,bgrof@gmail.com,bgrof2@unl.edu
+7b70a695-33c1-4a1a-9c95-51054f4017f6,Finn,Mertens,7 Leroy Hill,Huntington,WV,25705,fth@gmail.com
+840397ce-4ea9-401d-9afd-bd8c0b68f4fd,Simon,Petrikov,91 Graedel Street,Ocala,FL,34474,drpet@unl.edu,iking@ooo.com,spetrikov@unl.edu
+d6388b8b-b36b-4ca0-9f3d-48e86e78f79f,Marceline,Abadeer,6756 Schiller Hill,New Castle,PA,16107
+65405595-a97d-4939-adf4-71dcc2ff7b3d,Moe,Giovanni,3 Merchant Court,Tucson,AZ,85710,pres@moco.com
+961b7c38-6c9b-463c-8a8d-a784fd0afd9c,Fionna,Campbell,059 Lawn Plaza,Milwaukee,WI,53220,cakeisawesome@ooo.com
+51978bc2-f50e-436e-b33d-b6b65516184c,Martin,Mertens,7031 Dawn Point,Atlanta,GA,30380,mmertens@citadel.gov
+80ff9b2b-715a-4833-b56a-e81a987e0ac8,Minerva,Campbell,76 Meadow Valley Circle,San Diego,CA,92153,drcampbell@theisland.com,minerva@ooo.com
+fdce2d71-7a42-42c8-b6a3-53dad5d21194,Marshall,Lee,4 Mcguire Drive,Austin,TX,78715,mlee@nightosphere.com
+d2e84b16-b74e-4c28-90fc-585a3ec2a35e,Bonnibel,Bubblegum,9 Marquette Point,Pensacola,FL,32505,pbubbs@ooo.com

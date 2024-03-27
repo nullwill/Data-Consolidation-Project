@@ -1,16 +1,12 @@
 package com.yrl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonRootName;
 
-@JsonRootName("Poop")
-public abstract class Item {
+public abstract class Item implements Comparable<Item> {
     private String itemCode;
-    private String storeCode;
     private String name;
 
-    public Item(String storeCode, String itemCode, String name) {
-        this.storeCode = storeCode;
+    public Item(String itemCode, String name) {
     	this.itemCode = itemCode;
         this.name = name;
     }
@@ -22,11 +18,6 @@ public abstract class Item {
     public String getName() {
         return name;
     }
-    
-    @JsonIgnore
-	public String getStoreCode() {
-		return storeCode;
-	}
 	
     @JsonIgnore
     public abstract Double getTaxes();
@@ -36,7 +27,17 @@ public abstract class Item {
     
     @JsonIgnore
     public abstract Double getNetTotal();
-
+    
+    @JsonIgnore
+    public abstract Double getPreTaxTotal();
+    
+    @Override
+    public int compareTo(Item a) {
+    	return this.itemCode.compareTo(a.itemCode);
+    }
+    
+    
 	
+
     
 }

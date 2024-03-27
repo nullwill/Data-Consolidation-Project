@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ArrayList>
+  <item>
+    <uuid>51978bc2-f50e-436e-b33d-b6b65516184c</uuid>
+    <firstName>Martin</firstName>
+    <lastName>Mertens</lastName>
+    <address>
+      <street>7031 Dawn Point</street>
+      <city>Atlanta</city>
+      <state>GA</state>
+      <zip>30380</zip>
+    </address>
+    <name>Mertens, Martin</name>
+    <emails>
+      <email>mmertens@citadel.gov</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>65405595-a97d-4939-adf4-71dcc2ff7b3d</uuid>
+    <firstName>Moe</firstName>
+    <lastName>Giovanni</lastName>
+    <address>
+      <street>3 Merchant Court</street>
+      <city>Tucson</city>
+      <state>AZ</state>
+      <zip>85710</zip>
+    </address>
+    <name>Giovanni, Moe</name>
+    <emails>
+      <email>pres@moco.com</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>7b70a695-33c1-4a1a-9c95-51054f4017f6</uuid>
+    <firstName>Finn</firstName>
+    <lastName>Mertens</lastName>
+    <address>
+      <street>7 Leroy Hill</street>
+      <city>Huntington</city>
+      <state>WV</state>
+      <zip>25705</zip>
+    </address>
+    <name>Mertens, Finn</name>
+    <emails>
+      <email>fth@gmail.com</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>80ff9b2b-715a-4833-b56a-e81a987e0ac8</uuid>
+    <firstName>Minerva</firstName>
+    <lastName>Campbell</lastName>
+    <address>
+      <street>76 Meadow Valley Circle</street>
+      <city>San Diego</city>
+      <state>CA</state>
+      <zip>92153</zip>
+    </address>
+    <name>Campbell, Minerva</name>
+    <emails>
+      <email>drcampbell@theisland.com</email>
+      <email>minerva@ooo.com</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>840397ce-4ea9-401d-9afd-bd8c0b68f4fd</uuid>
+    <firstName>Simon</firstName>
+    <lastName>Petrikov</lastName>
+    <address>
+      <street>91 Graedel Street</street>
+      <city>Ocala</city>
+      <state>FL</state>
+      <zip>34474</zip>
+    </address>
+    <name>Petrikov, Simon</name>
+    <emails>
+      <email>drpet@unl.edu</email>
+      <email>iking@ooo.com</email>
+      <email>spetrikov@unl.edu</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>961b7c38-6c9b-463c-8a8d-a784fd0afd9c</uuid>
+    <firstName>Fionna</firstName>
+    <lastName>Campbell</lastName>
+    <address>
+      <street>059 Lawn Plaza</street>
+      <city>Milwaukee</city>
+      <state>WI</state>
+      <zip>53220</zip>
+    </address>
+    <name>Campbell, Fionna</name>
+    <emails>
+      <email>cakeisawesome@ooo.com</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
+    <firstName>Bety</firstName>
+    <lastName>Grof</lastName>
+    <address>
+      <street>7233 Jenna Road</street>
+      <city>Migrate</city>
+      <state>KY</state>
+      <zip>41905</zip>
+    </address>
+    <name>Grof, Bety</name>
+    <emails>
+      <email>bgrof@gmail.com</email>
+      <email>bgrof2@unl.edu</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>d2e84b16-b74e-4c28-90fc-585a3ec2a35e</uuid>
+    <firstName>Bonnibel</firstName>
+    <lastName>Bubblegum</lastName>
+    <address>
+      <street>9 Marquette Point</street>
+      <city>Pensacola</city>
+      <state>FL</state>
+      <zip>32505</zip>
+    </address>
+    <name>Bubblegum, Bonnibel</name>
+    <emails>
+      <email>pbubbs@ooo.com</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>d6388b8b-b36b-4ca0-9f3d-48e86e78f79f</uuid>
+    <firstName>Marceline</firstName>
+    <lastName>Abadeer</lastName>
+    <address>
+      <street>6756 Schiller Hill</street>
+      <city>New Castle</city>
+      <state>PA</state>
+      <zip>16107</zip>
+    </address>
+    <name>Abadeer, Marceline</name>
+    <emails/>
+  </item>
+  <item>
+    <uuid>fdce2d71-7a42-42c8-b6a3-53dad5d21194</uuid>
+    <firstName>Marshall</firstName>
+    <lastName>Lee</lastName>
+    <address>
+      <street>4 Mcguire Drive</street>
+      <city>Austin</city>
+      <state>TX</state>
+      <zip>78715</zip>
+    </address>
+    <name>Lee, Marshall</name>
+    <emails>
+      <email>mlee@nightosphere.com</email>
+    </emails>
+  </item>
+</ArrayList>

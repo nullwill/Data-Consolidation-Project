@@ -1,53 +1,53 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<SingletonList>
-  <item>
-    <itemCode>q001</itemCode>
-    <name>iPhone X</name>
-    <price>255.61</price>
-  </item>
-  <item>
-    <itemCode>a001</itemCode>
-    <name>Samsung Galaxy S10</name>
-    <price>372.62</price>
-  </item>
-  <item>
-    <itemCode>x001</itemCode>
-    <name>Google Pixel 4</name>
-    <price>230.29</price>
-  </item>
-  <item>
-    <itemCode>d001</itemCode>
-    <name>iPhone 15</name>
-    <price>185.58</price>
-  </item>
-  <item>
-    <itemCode>q002</itemCode>
-    <name>Cracked screen repair</name>
-    <costPerHour>295.89</costPerHour>
-  </item>
-  <item>
-    <itemCode>a002</itemCode>
-    <name>LCD replacement</name>
-    <costPerHour>245.1</costPerHour>
-  </item>
-  <item>
-    <itemCode>x002</itemCode>
-    <name>Battery replacement</name>
-    <costPerHour>470.94</costPerHour>
-  </item>
-  <item>
-    <itemCode>q003</itemCode>
-    <name>Unlimited talk and text</name>
-    <periodCost>240.16</periodCost>
-  </item>
-  <item>
-    <itemCode>a003</itemCode>
-    <name>2GB data plan</name>
-    <costPerGB>74.99</costPerGB>
-  </item>
-  <item>
-    <itemCode>x003</itemCode>
-    <name>Family plan</name>
-    <costPerGB>340.02</costPerGB>
-  </item>
-</SingletonList>
+<?xml version="1.0"?>
+<items>
+<product>
+  <code>e003</code>
+  <name>iPhone 11 hardcase</name>
+  <price>34.95</price>
+</product>
+<voicePlan>
+  <code>p003</code>
+  <name>Unlimited Daily</name>
+  <periodCost>50.0</periodCost>
+</voicePlan>
+<dataPlan>
+  <code>p002</code>
+  <name>4G Basic</name>
+  <costPerGB>0.43</costPerGB>
+</dataPlan>
+<product>
+  <code>e001</code>
+  <name>iPhone 11</name>
+  <price>1200.0</price>
+</product>
+<dataPlan>
+  <code>p001</code>
+  <name>5G Deluxe</name>
+  <costPerGB>1.99</costPerGB>
+</dataPlan>
+<product>
+  <code>e002</code>
+  <name>Samsung Galaxy A21</name>
+  <price>99.99</price>
+</product>
+<service>
+  <code>s003</code>
+  <name>Delivery</name>
+  <costPerHour>59.99</costPerHour>
+</service>
+<voicePlan>
+  <code>p004</code>
+  <name>Unlimited talk/300 Text</name>
+  <periodCost>70.0</periodCost>
+</voicePlan>
+<service>
+  <code>s002</code>
+  <name>Router Install</name>
+  <costPerHour>120.99</costPerHour>
+</service>
+<service>
+  <code>s001</code>
+  <name>Screen Repair</name>
+  <costPerHour>75.5</costPerHour>
+</service>
+</items>

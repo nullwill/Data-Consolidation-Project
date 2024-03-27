@@ -6,7 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-public class Person {
+public class Person implements Comparable<Person>{
 	private String uuid;
 	private String firstName;
 	private String lastName;
@@ -51,10 +51,22 @@ public class Person {
 		return lastName + ", " + firstName;
 	}
 	
+	public String getFormattedInfo() {
+		return this.getName() + " (" + this.getUuid() + ")\n" + 
+				"\t" + this.getEmails() + "\n" +
+				"\t" + this.getAddress().getStreet() + "\n" +
+				"\t" + this.getAddress().getCityStateZip() + "\n";
+	}
+	
 	static Comparator<Person> cmpByUuid = new Comparator<Person>() {
 		public int compare(Person a, Person b) {
 			return a.getUuid().compareTo(b.getUuid());
 		}
 	};
+
+	@Override
+	public int compareTo(Person o) {
+		return this.getUuid().compareTo(o.getUuid());
+	}
 	
 }

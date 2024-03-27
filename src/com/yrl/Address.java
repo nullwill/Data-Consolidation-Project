@@ -31,4 +31,8 @@ public class Address {
 	public Integer getZip() {
 		return zip;
 	}
+	
+	public String getCityStateZip() {
+		return city + " " + state + " " + zip; 
+	}
 }

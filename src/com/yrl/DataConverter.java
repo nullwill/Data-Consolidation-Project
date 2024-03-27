@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
@@ -51,7 +51,7 @@ public class DataConverter {
 			
 			try {
 				String json = mapper.writeValueAsString(map);
-				System.out.println(json);
+				pw.println(json);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
@@ -81,6 +81,10 @@ public class DataConverter {
 					.build();
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
 			mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);			
+			
+			Class<?> itemClass = Item.class;
+			JacksonXmlRootElement annotation = itemClass.getAnnotation(JacksonXmlRootElement.class);
+			System.out.println("JacksonXmlRootElement annotation on Item class: " + annotation);
 			try {
 				mapper.writeValue(f, list);
 			} catch (StreamWriteException e) {
@@ -102,25 +106,28 @@ public class DataConverter {
 		String storesFile  = "data/Stores.csv";
 		String itemFile   = "data/Items.csv";
 		
-		String personsJson = "data/Persons.json";
-		String storesJson  = "data/Stores.json";
-		String itemJson   = "data/Items.json";
+		String personsJson = "output/Persons.json";
+		String storesJson  = "output/Stores.json";
+		String itemJson   = "output/Items.json";
 		
-		String personsXml = "data/Persons.xml";
-		String storesXml  = "data/Stores.xml";
-		String itemXml   = "data/Items.xml";
+		String personsXml = "output/Persons.xml";
+		String storesXml  = "output/Stores.xml";
+		String itemXml   = "output/Items.xml";
 		
 		List<Person> people = DataLoader.loadPersonData(personsFile);
 		List<Store> stores  = DataLoader.loadStoreData(storesFile, people);
-		List<?> items   = DataLoader.loadItemData(itemFile);
+		HashMap<String, Item> items   = DataLoader.loadItemData(itemFile);
 		
-//		persistJson(people, "persons", personsJson);
-//		persistJson(stores, "stores", storesJson);
-		persistJson(items, "items", itemJson);
+		List<Item> itemsList = new ArrayList<Item>(items.values());
 		
-//		persistXml(people, "person", personsXml);
-//		persistXml(stores, "store", storesXml);
-		persistXml(items, "item", itemXml);
+		persistJson(people, "persons", personsJson);
+		persistJson(stores, "stores", storesJson);
+		persistJson(itemsList, "items", itemJson);
+		
+		persistXml(people, "person", personsXml);
+		persistXml(stores, "store", storesXml);
+		persistXml(itemsList, "item", itemXml);
+		
 		
 	}
 }

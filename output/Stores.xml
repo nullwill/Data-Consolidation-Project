@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ArrayList>
+  <item>
+    <storeCode>3c0234</storeCode>
+    <manager>
+      <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
+      <firstName>Bety</firstName>
+      <lastName>Grof</lastName>
+      <address>
+        <street>7233 Jenna Road</street>
+        <city>Migrate</city>
+        <state>KY</state>
+        <zip>41905</zip>
+      </address>
+      <name>Grof, Bety</name>
+      <emails>
+        <email>bgrof@gmail.com</email>
+        <email>bgrof2@unl.edu</email>
+      </emails>
+    </manager>
+    <address>
+      <street>123 Cornhusker Way</street>
+      <city>Lincoln</city>
+      <state>NE</state>
+      <zip>68508</zip>
+    </address>
+    <sales/>
+  </item>
+  <item>
+    <storeCode>9f352c</storeCode>
+    <manager>
+      <uuid>fdce2d71-7a42-42c8-b6a3-53dad5d21194</uuid>
+      <firstName>Marshall</firstName>
+      <lastName>Lee</lastName>
+      <address>
+        <street>4 Mcguire Drive</street>
+        <city>Austin</city>
+        <state>TX</state>
+        <zip>78715</zip>
+      </address>
+      <name>Lee, Marshall</name>
+      <emails>
+        <email>mlee@nightosphere.com</email>
+      </emails>
+    </manager>
+    <address>
+      <street>4242 A Street</street>
+      <city>Omaha</city>
+      <state>NE</state>
+      <zip>68117</zip>
+    </address>
+    <sales/>
+  </item>
+  <item>
+    <storeCode>73668b</storeCode>
+    <manager>
+      <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
+      <firstName>Bety</firstName>
+      <lastName>Grof</lastName>
+      <address>
+        <street>7233 Jenna Road</street>
+        <city>Migrate</city>
+        <state>KY</state>
+        <zip>41905</zip>
+      </address>
+      <name>Grof, Bety</name>
+      <emails>
+        <email>bgrof@gmail.com</email>
+        <email>bgrof2@unl.edu</email>
+      </emails>
+    </manager>
+    <address>
+      <street>RR9901</street>
+      <city>Mead</city>
+      <state>NE</state>
+      <zip>61234</zip>
+    </address>
+    <sales/>
+  </item>
+  <item>
+    <storeCode>96f2cf</storeCode>
+    <manager>
+      <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
+      <firstName>Bety</firstName>
+      <lastName>Grof</lastName>
+      <address>
+        <street>7233 Jenna Road</street>
+        <city>Migrate</city>
+        <state>KY</state>
+        <zip>41905</zip>
+      </address>
+      <name>Grof, Bety</name>
+      <emails>
+        <email>bgrof@gmail.com</email>
+        <email>bgrof2@unl.edu</email>
+      </emails>
+    </manager>
+    <address>
+      <street>452 13th Street</street>
+      <city>Hastings</city>
+      <state>NE</state>
+      <zip>68901</zip>
+    </address>
+    <sales/>
+  </item>
+  <item>
+    <storeCode>25d901</storeCode>
+    <manager>
+      <uuid>d2e84b16-b74e-4c28-90fc-585a3ec2a35e</uuid>
+      <firstName>Bonnibel</firstName>
+      <lastName>Bubblegum</lastName>
+      <address>
+        <street>9 Marquette Point</street>
+        <city>Pensacola</city>
+        <state>FL</state>
+        <zip>32505</zip>
+      </address>
+      <name>Bubblegum, Bonnibel</name>
+      <emails>
+        <email>pbubbs@ooo.com</email>
+      </emails>
+    </manager>
+    <address>
+      <street>180 Magdeline Plaza</street>
+      <city>Wichita</city>
+      <state>KS</state>
+      <zip>67230</zip>
+    </address>
+    <sales/>
+  </item>
+</ArrayList>

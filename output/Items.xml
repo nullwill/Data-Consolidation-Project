@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ArrayList>
+  <item>
+    <itemCode>e003</itemCode>
+    <name>iPhone 11 hardcase</name>
+    <price>34.95</price>
+  </item>
+  <item>
+    <itemCode>p003</itemCode>
+    <name>Unlimited Daily</name>
+    <periodCost>50.0</periodCost>
+  </item>
+  <item>
+    <itemCode>p002</itemCode>
+    <name>4G Basic</name>
+    <costPerGB>0.43</costPerGB>
+  </item>
+  <item>
+    <itemCode>e001</itemCode>
+    <name>iPhone 11</name>
+    <price>1200.0</price>
+  </item>
+  <item>
+    <itemCode>p001</itemCode>
+    <name>5G Deluxe</name>
+    <costPerGB>1.99</costPerGB>
+  </item>
+  <item>
+    <itemCode>e002</itemCode>
+    <name>Samsung Galaxy A21</name>
+    <price>99.99</price>
+  </item>
+  <item>
+    <itemCode>s003</itemCode>
+    <name>Delivery</name>
+    <costPerHour>59.99</costPerHour>
+  </item>
+  <item>
+    <itemCode>p004</itemCode>
+    <name>Unlimited talk/300 Text</name>
+    <periodCost>70.0</periodCost>
+  </item>
+  <item>
+    <itemCode>s002</itemCode>
+    <name>Router Install</name>
+    <costPerHour>120.99</costPerHour>
+  </item>
+  <item>
+    <itemCode>s001</itemCode>
+    <name>Screen Repair</name>
+    <costPerHour>75.5</costPerHour>
+  </item>
+</ArrayList>
