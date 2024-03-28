@@ -3,95 +3,92 @@ Phase 1 output...
 | Summary Report - By Total                                                              |
 +----------------------------------------------------------------------------------------+
 Invoice #  Store      Customer                       Num Items          Tax       Total
-s001       3c0234     Mertens, Finn                  5          $     36.36 $    734.60
-s002       3c0234     Lee, Marshall                  0          $      0.00 $      0.00
-s003       25d901     Mertens, Finn                  0          $      0.00 $      0.00
+q001       abcd33     Ballaam, Roanna                1          $      0.00 $    255.61
+x003       abcd33     Ballaam, Roanna                1          $      0.00 $    340.02
+a002       002jfs     Burman, Gennie                 1          $      0.00 $    245.10
 +----------------------------------------------------------------------------------------+
-                                                     5          $     36.36 $    734.60
+                                                     5          $      0.00 $    734.60
 
 +----------------------------------------------------------------+
 | Store Sales Summary Report                                     |
 +----------------------------------------------------------------+
 Store      Manager                        # Sales    Grand Total    
-25d901     Bubblegum, Bonnibel            1          $      0.00
-3c0234     Grof, Bety                     2          $    734.60
-73668b     Grof, Bety                     0          $      0.00
-96f2cf     Grof, Bety                     0          $      0.00
-9f352c     Lee, Marshall                  0          $      0.00
+3c0234     Ballaam, Roanna                0          $      0.00
+2asdfd     Burman, Gennie                 0          $      0.00
+dd3241     Reilly, Alon                   0          $      0.00
+abcd33     Ferreres, Miles                2          $    595.63
+092kkl     Jovicic, Byrann                0          $      0.00
+92kals2    Cahill, Tremaine               0          $      0.00
+02kjvv     Reolfi, Locke                  0          $      0.00
+kd20jf     Rameau, Niel                   0          $      0.00
+pa93js     Paireman, Findley              0          $      0.00
+002jfs     Espinay, Berty                 1          $    245.10
 +----------------------------------------------------------------+
-                                          3          $    734.60
+                                          3          $    840.73
 
-Sale     #s003
-Store    #25d901
-Date      2023-11-15
+Sale     #q001
+Store    #abcd33
+Date      2023-06-09
 Customer: 
-Mertens, Finn (7b70a695-33c1-4a1a-9c95-51054f4017f6) 
-	[fth@gmail.com]
-	7 Leroy Hill
-	Huntington WV 25705
+Ballaam, Roanna (319e16a0-e1f7-4b33-b4d0-d987bf02969d) 
+	[rballaam0@ebay.com]
+	935 Parkside Hill
+	Sainte-Marthe-sur-le-Lac KS 67120
 
 Sales Person: 
-Campbell, Fionna (961b7c38-6c9b-463c-8a8d-a784fd0afd9c) 
-	[cakeisawesome@ooo.com]
-	059 Lawn Plaza
-	Milwaukee WI 53220
+Ferreres, Miles (c1ddf173-ed89-4928-bea7-5472db1fa745) 
+	[mferreres3@netvibes.com]
+	5 Cardinal Parkway
+	Heshui LS 234948
 
-Items (0)                                                            Tax       Total
+Items (1)                                                            Tax       Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=- -=-=-=-=-=-
+iPhone X (q001)
+                                                              $      0.00 $    255.61
                                                              -=-=-=-=-=- -=-=-=-=-=-
-                                                   Subtotals $      0.00 $      0.00
-                                                 Grand Total             $      0.00
-Sale     #s002
-Store    #3c0234
-Date      2023-11-03
+                                                   Subtotals $      0.00 $    255.61
+                                                 Grand Total             $    255.61
+Sale     #x003
+Store    #abcd33
+Date      2023-06-09
 Customer: 
-Lee, Marshall (fdce2d71-7a42-42c8-b6a3-53dad5d21194) 
-	[mlee@nightosphere.com]
-	4 Mcguire Drive
-	Austin TX 78715
+Ballaam, Roanna (319e16a0-e1f7-4b33-b4d0-d987bf02969d) 
+	[rballaam0@ebay.com]
+	935 Parkside Hill
+	Sainte-Marthe-sur-le-Lac KS 67120
 
 Sales Person: 
-Giovanni, Moe (65405595-a97d-4939-adf4-71dcc2ff7b3d) 
-	[pres@moco.com]
-	3 Merchant Court
-	Tucson AZ 85710
+Ferreres, Miles (c1ddf173-ed89-4928-bea7-5472db1fa745) 
+	[mferreres3@netvibes.com]
+	5 Cardinal Parkway
+	Heshui LS 234948
 
-Items (0)                                                            Tax       Total
+Items (1)                                                            Tax       Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=- -=-=-=-=-=-
+iPhone X (x003)                                              
+                                                            $      0.00 $    340.02
                                                              -=-=-=-=-=- -=-=-=-=-=-
-                                                   Subtotals $      0.00 $      0.00
-                                                 Grand Total             $      0.00
-Sale     #s001
-Store    #3c0234
-Date      2023-12-01
+                                                   Subtotals $      0.00 $    340.02
+                                                 Grand Total             $    340.02
+Sale     #a002
+Store    #002jfs 
+Date      2022-05-23
 Customer: 
-Mertens, Finn (7b70a695-33c1-4a1a-9c95-51054f4017f6) 
-	[fth@gmail.com]
-	7 Leroy Hill
-	Huntington WV 25705
-l2
+Burman, Gennie (30b45cf2-5161-4f60-a107-0f62ec14a924) 
+	[gburman1@hatena.ne.jp]
+	65 Evergreen Junction
+	Dul’durga AK 687200
+
 Sales Person: 
-Giovanni, Moe (65405595-a97d-4939-adf4-71dcc2ff7b3d) 
-	[pres@moco.com]
-	3 Merchant Court
-	Tucson AZ 85710
+Rameau, Niel (83f2f328-0ff5-4096-9f1e-693615cb7c3a) 
+	[nrameau7@tripadvisor.com]
+	305 Sommers Circle
+	Vrdy TX 285471
 
-Items (5)                                                            Tax       Total
+Items (1)                                                            Tax       Total
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-                          -=-=-=-=-=- -=-=-=-=-=-
-Samsung Galaxy A21 (e002)  
-                                                             $      6.50 $     99.99
-iPhone 11 (e001) - Lease for 35 months 
-                                                             $      0.00 $     51.43
-Delivery (s003) - Served by Campbell, Minerva 
-  	1.50 hours @ $59.99/hour 
-                                                             $      3.15 $     89.99
-5G Deluxe (p001) - Data
-  	150.00 GB @ $1.99/GB 
-                                                             $     16.42 $    298.50
-Unlimited Daily (p003) - Voice 402-472-2401
-  	95 days @ $50.00 / 30 days 
-                                                             $     10.29 $    158.33
+LCD Replacement (a002)  
+                                                             $      0.00 $    245.10
                                                              -=-=-=-=-=- -=-=-=-=-=-
-                                                   Subtotals $     36.36 $    698.24
-                                                 Grand Total             $    734.60
-
+                                                   Subtotals $      0.00 $    245.10
+                                                 Grand Total             $    245.10

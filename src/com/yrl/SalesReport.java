@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 
+ * This is the file that contains the methods to collect, organize, and output the
+ * sales report data. 
  */
 
 public class SalesReport {
@@ -81,7 +82,7 @@ public class SalesReport {
 
 		}
 		System.out.println("+----------------------------------------------------------------+");
-		System.out.printf("%43d\t\t\t $%10.2f\n\n", allItems, allTotal);
+		System.out.printf("%43d\t     $%10.2f\n\n", allItems, allTotal);
 	}
 
 	public static void printIndividualSalesData(String filename, List<Sale> sales, HashMap<String, Person> people,

@@ -6,6 +6,11 @@ import java.util.List;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+/**
+ * This class contains the methods and attributes pertaining to
+ * a "Person". 
+ */
+
 public class Person implements Comparable<Person>{
 	private String uuid;
 	private String firstName;
