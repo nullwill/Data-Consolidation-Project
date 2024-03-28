@@ -3,6 +3,11 @@ package com.yrl;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * This class contains the methods and attributes pertaining
+ * to a "Leased" item, it extends from the "Product" class
+ */
+
 public class Leased extends Product {
 	
 	private LocalDate startDate;

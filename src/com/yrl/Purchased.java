@@ -1,5 +1,11 @@
 package com.yrl;
 
+/**
+ * This class contains the attributes and methods pertaining
+ * to a "Purchased" item, this class extends from the "Product"
+ * class. 
+ */
+
 public class Purchased extends Product{
 
 	public Purchased(String itemCode, String name, Double price) {

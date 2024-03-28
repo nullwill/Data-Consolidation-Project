@@ -6,6 +6,11 @@ import java.util.Comparator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * This class contains the attributes and methods pertaining to
+ * the Service item, which extends from the abstract "Item" class.
+ */
+
 @JacksonXmlRootElement(localName = "service")
 public class Service extends Item {
 	private Double costPerHour;

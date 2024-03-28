@@ -5,6 +5,11 @@ import java.util.Comparator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * This class contains the methods and attributes pertaining to a
+ * "VoicePlan" it extends from the abstract "Item" class
+ */
+
 @JacksonXmlRootElement(localName = "voicePlan")
 public class VoicePlan extends Item {
 	private Double periodCost;

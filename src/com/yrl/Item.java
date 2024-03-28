@@ -2,6 +2,11 @@ package com.yrl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * This is the super class for the "Item" type, it is abstract
+ * and contains the methods and attributes for an item.
+ */
+
 public abstract class Item implements Comparable<Item> {
     private String itemCode;
     private String name;

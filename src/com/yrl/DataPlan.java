@@ -5,6 +5,12 @@ import java.util.Comparator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * This class contains the methods and attributes pertaining to a
+ * "DataPlan" it extends from the abstract "Item" class
+ */
+
+
 @JacksonXmlRootElement(localName = "dataPlan")
 public class DataPlan extends Item {
 	private Double costPerGB;

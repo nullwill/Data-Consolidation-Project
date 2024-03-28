@@ -1,5 +1,10 @@
 package com.yrl;
 
+/**
+ * This class contains the methods and attributes pertaining to an Address.
+ * The address is used as a type. 
+ */
+
 public class Address {
 	private String street;
 	private String city;

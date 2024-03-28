@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * This class contains the attributes and methods pertaining to
+ * a product. It extends the abstract "Item" class. 
+ */
+
 @JacksonXmlRootElement(localName = "product")
 public class Product extends Item {
 	private Double price;

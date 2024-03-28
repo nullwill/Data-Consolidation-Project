@@ -3,6 +3,11 @@ package com.yrl;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * This class contains the methods and attributes pertaining to 
+ * the "Sale" category.
+ */
+
 public class Sale implements Comparable<Sale> {
 	private String saleCode;
 	private String storeCode;
@@ -60,10 +65,6 @@ public class Sale implements Comparable<Sale> {
 		}
 		
 		return total;
-	}
-	
-	public int cmpBySaleCode(Sale a, Sale b) {
-		return a.getSaleCode().compareTo(b.getSaleCode());
 	}
 
 	@Override

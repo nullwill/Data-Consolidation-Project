@@ -2,6 +2,11 @@ package com.yrl;
 
 import java.util.List;
 
+/**
+ * This class contains the methods and attributes pertaining
+ * to the "Store"
+ */
+
 public class Store implements Comparable<Store>{
 	private String storeCode;
 	private Person manager;
