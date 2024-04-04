@@ -3,11 +3,14 @@ package com.yrl;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 /**
  * This class contains the methods and attributes pertaining
  * to a "Leased" item, it extends from the "Product" class
  */
 
+@JacksonXmlRootElement(localName="this")
 public class Leased extends Product {
 	
 	private LocalDate startDate;

@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -37,7 +37,7 @@ public class DataConverter {
 	 * @param head
 	 * @param outputFileName
 	 */
-	public static void persistJson(List<?> list, String root, String outputFileName) {
+	public static void persistJson(HashMap<?, ?> map, String root, String outputFileName) {
 		File f = new File(outputFileName);
 		PrintWriter pw;
 		try {
@@ -46,11 +46,8 @@ public class DataConverter {
 			
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
 			
-			Map<String, List<?>> map = new HashMap<>();
-			map.put(root, list);
-			
 			try {
-				String json = mapper.writeValueAsString(map);
+				String json = mapper.writeValueAsString(map.values());
 				pw.println(json);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
@@ -70,7 +67,7 @@ public class DataConverter {
 	 * @param root
 	 * @param outputFileName
 	 */
-	public static void persistXml(List<?> list, String root, String outputFileName) {
+	public static void persistXml(HashMap<?, ?> map, String root, String outputFileName) {
 		File f = new File(outputFileName);
 		PrintWriter pw;
 		try {
@@ -82,11 +79,8 @@ public class DataConverter {
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
 			mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);			
 			
-			Class<?> itemClass = Item.class;
-			JacksonXmlRootElement annotation = itemClass.getAnnotation(JacksonXmlRootElement.class);
-			System.out.println("JacksonXmlRootElement annotation on Item class: " + annotation);
 			try {
-				mapper.writeValue(f, list);
+				mapper.writeValue(f, map.values());
 			} catch (StreamWriteException e) {
 				e.printStackTrace();
 			} catch (DatabindException e) {
@@ -101,7 +95,7 @@ public class DataConverter {
 		}
 	}
 	
-	public static void main(String args[]) {
+	public static void main(String args[]) throws JsonProcessingException, FileNotFoundException {
 		String personsFile = "data/Persons.csv";
 		String storesFile  = "data/Stores.csv";
 		String itemFile   = "data/Items.csv";
@@ -114,20 +108,42 @@ public class DataConverter {
 		String storesXml  = "output/Stores.xml";
 		String itemXml   = "output/Items.xml";
 		
-		List<Person> people = DataLoader.loadPersonData(personsFile);
-		List<Store> stores  = DataLoader.loadStoreData(storesFile, people);
+		HashMap<String, Person> people = DataLoader.loadPersonData(personsFile);
+		HashMap<String, Store> stores  = DataLoader.loadStoreData(storesFile, people);
 		HashMap<String, Item> items   = DataLoader.loadItemData(itemFile);
 		
-		List<Item> itemsList = new ArrayList<Item>(items.values());
+		HashMap<String, Item> itemsByType = new HashMap<String, Item>();
 		
-		persistJson(people, "persons", personsJson);
-		persistJson(stores, "stores", storesJson);
-		persistJson(itemsList, "items", itemJson);
+		for (Item i : items.values()) {
+			if (i instanceof Product) {
+				itemsByType.put("product", i);
+			} else if (i instanceof Service) {
+				itemsByType.put("service", i);
+			} else if (i instanceof VoicePlan) {
+				itemsByType.put("voicePlan", i);
+			} else if (i instanceof DataPlan) {
+				itemsByType.put("dataPlan", i);
+			}
+		}
 		
-		persistXml(people, "person", personsXml);
-		persistXml(stores, "store", storesXml);
-		persistXml(itemsList, "item", itemXml);
+		File f = new File(itemXml);
+		PrintWriter pw = new PrintWriter(f);
+		ObjectMapper mapper = new ObjectMapper();
+		XmlMapper xmlMapper = new XmlMapper();
 		
+		String xmlString = xmlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemsByType);
+		pw.println(xmlString);
+		
+//		pw.println(xmlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(items));
+		pw.close();
+//		persistJson(people, "persons", personsJson);
+//		persistJson(stores, "stores", storesJson);
+//		persistJson(items, "items", itemJson);
+//		
+//		persistXml(people, "person", personsXml);
+//		persistXml(stores, "store", storesXml);
+//		persistXml(items, "item", itemXml);
+//		
 		
 	}
 }

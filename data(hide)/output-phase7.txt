@@ -3,21 +3,20 @@ Phase 7 output...
 | Sales by Customer                                                       |
 +-------------------------------------------------------------------------+
 Sale       Store      Customer             Salesperson          Total     
-s001       3c0234     Finn, Mertens        Moe, Giovanni        $   1961.17
-s003       25d901     Finn, Mertens        Fionna, Campbell     $      0.00
-s002       3c0234     Marshall, Lee        Moe, Giovanni        $      0.00
+q001       abcd33     Ballaam, Roanna      Miles, Ferreres      $    255.61
+x003       abcd33     Ballaam, Roanna      Miles, Ferreres      $    340.02
+a002       002jfs     Burman, Gennie       Rameau, Niel         $    245.10
 +-------------------------------------------------------------------------+
 | Sales by Total                                                          |
 +-------------------------------------------------------------------------+
 Sale       Store      Customer             Salesperson          Total     
-s001       3c0234     Finn, Mertens        Moe, Giovanni        $   1961.17
-s002       3c0234     Marshall, Lee        Moe, Giovanni        $      0.00
-s003       25d901     Finn, Mertens        Fionna, Campbell     $      0.00
+x003       abcd33     Ballaam, Roanna      Miles, Ferreres      $    340.02
+q001       abcd33     Ballaam, Roanna      Miles, Ferreres      $    255.61
+a002       002jfs     Burman, Gennie       Rameau, Niel         $    245.10
 +-------------------------------------------------------------------------+
 | Sales by Store                                                          |
 +-------------------------------------------------------------------------+
 Sale       Store      Customer             Salesperson          Total     
-s003       25d901     Finn, Mertens        Fionna, Campbell     $      0.00
-s001       3c0234     Finn, Mertens        Moe, Giovanni        $   1961.17
-s002       3c0234     Marshall, Lee        Moe, Giovanni        $      0.00
-
+a002       002jfs     Burman, Gennie       Rameau, Niel         $    245.10
+x003       abcd33     Ballaam, Roanna      Miles, Ferreres      $    340.02
+q001       abcd33     Ballaam, Roanna      Miles, Ferreres      $    255.61

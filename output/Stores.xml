@@ -1,82 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ArrayList>
-  <item>
-    <storeCode>3c0234</storeCode>
-    <manager>
-      <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
-      <firstName>Bety</firstName>
-      <lastName>Grof</lastName>
-      <address>
-        <street>7233 Jenna Road</street>
-        <city>Migrate</city>
-        <state>KY</state>
-        <zip>41905</zip>
-      </address>
-      <name>Grof, Bety</name>
-      <emails>
-        <email>bgrof@gmail.com</email>
-        <email>bgrof2@unl.edu</email>
-      </emails>
-    </manager>
-    <address>
-      <street>123 Cornhusker Way</street>
-      <city>Lincoln</city>
-      <state>NE</state>
-      <zip>68508</zip>
-    </address>
-    <sales/>
-  </item>
-  <item>
-    <storeCode>9f352c</storeCode>
-    <manager>
-      <uuid>fdce2d71-7a42-42c8-b6a3-53dad5d21194</uuid>
-      <firstName>Marshall</firstName>
-      <lastName>Lee</lastName>
-      <address>
-        <street>4 Mcguire Drive</street>
-        <city>Austin</city>
-        <state>TX</state>
-        <zip>78715</zip>
-      </address>
-      <name>Lee, Marshall</name>
-      <emails>
-        <email>mlee@nightosphere.com</email>
-      </emails>
-    </manager>
-    <address>
-      <street>4242 A Street</street>
-      <city>Omaha</city>
-      <state>NE</state>
-      <zip>68117</zip>
-    </address>
-    <sales/>
-  </item>
-  <item>
-    <storeCode>73668b</storeCode>
-    <manager>
-      <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
-      <firstName>Bety</firstName>
-      <lastName>Grof</lastName>
-      <address>
-        <street>7233 Jenna Road</street>
-        <city>Migrate</city>
-        <state>KY</state>
-        <zip>41905</zip>
-      </address>
-      <name>Grof, Bety</name>
-      <emails>
-        <email>bgrof@gmail.com</email>
-        <email>bgrof2@unl.edu</email>
-      </emails>
-    </manager>
-    <address>
-      <street>RR9901</street>
-      <city>Mead</city>
-      <state>NE</state>
-      <zip>61234</zip>
-    </address>
-    <sales/>
-  </item>
+<Values>
   <item>
     <storeCode>96f2cf</storeCode>
     <manager>
@@ -88,8 +11,14 @@
         <city>Migrate</city>
         <state>KY</state>
         <zip>41905</zip>
+        <cityStateZip>Migrate KY 41905</cityStateZip>
       </address>
       <name>Grof, Bety</name>
+      <formattedInfo>Grof, Bety (a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7)
+	[bgrof@gmail.com, bgrof2@unl.edu]
+	7233 Jenna Road
+	Migrate KY 41905
+</formattedInfo>
       <emails>
         <email>bgrof@gmail.com</email>
         <email>bgrof2@unl.edu</email>
@@ -100,6 +29,7 @@
       <city>Hastings</city>
       <state>NE</state>
       <zip>68901</zip>
+      <cityStateZip>Hastings NE 68901</cityStateZip>
     </address>
     <sales/>
   </item>
@@ -114,8 +44,14 @@
         <city>Pensacola</city>
         <state>FL</state>
         <zip>32505</zip>
+        <cityStateZip>Pensacola FL 32505</cityStateZip>
       </address>
       <name>Bubblegum, Bonnibel</name>
+      <formattedInfo>Bubblegum, Bonnibel (d2e84b16-b74e-4c28-90fc-585a3ec2a35e)
+	[pbubbs@ooo.com]
+	9 Marquette Point
+	Pensacola FL 32505
+</formattedInfo>
       <emails>
         <email>pbubbs@ooo.com</email>
       </emails>
@@ -125,7 +61,106 @@
       <city>Wichita</city>
       <state>KS</state>
       <zip>67230</zip>
+      <cityStateZip>Wichita KS 67230</cityStateZip>
     </address>
     <sales/>
   </item>
-</ArrayList>
+  <item>
+    <storeCode>3c0234</storeCode>
+    <manager>
+      <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
+      <firstName>Bety</firstName>
+      <lastName>Grof</lastName>
+      <address>
+        <street>7233 Jenna Road</street>
+        <city>Migrate</city>
+        <state>KY</state>
+        <zip>41905</zip>
+        <cityStateZip>Migrate KY 41905</cityStateZip>
+      </address>
+      <name>Grof, Bety</name>
+      <formattedInfo>Grof, Bety (a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7)
+	[bgrof@gmail.com, bgrof2@unl.edu]
+	7233 Jenna Road
+	Migrate KY 41905
+</formattedInfo>
+      <emails>
+        <email>bgrof@gmail.com</email>
+        <email>bgrof2@unl.edu</email>
+      </emails>
+    </manager>
+    <address>
+      <street>123 Cornhusker Way</street>
+      <city>Lincoln</city>
+      <state>NE</state>
+      <zip>68508</zip>
+      <cityStateZip>Lincoln NE 68508</cityStateZip>
+    </address>
+    <sales/>
+  </item>
+  <item>
+    <storeCode>73668b</storeCode>
+    <manager>
+      <uuid>a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7</uuid>
+      <firstName>Bety</firstName>
+      <lastName>Grof</lastName>
+      <address>
+        <street>7233 Jenna Road</street>
+        <city>Migrate</city>
+        <state>KY</state>
+        <zip>41905</zip>
+        <cityStateZip>Migrate KY 41905</cityStateZip>
+      </address>
+      <name>Grof, Bety</name>
+      <formattedInfo>Grof, Bety (a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7)
+	[bgrof@gmail.com, bgrof2@unl.edu]
+	7233 Jenna Road
+	Migrate KY 41905
+</formattedInfo>
+      <emails>
+        <email>bgrof@gmail.com</email>
+        <email>bgrof2@unl.edu</email>
+      </emails>
+    </manager>
+    <address>
+      <street>RR9901</street>
+      <city>Mead</city>
+      <state>NE</state>
+      <zip>61234</zip>
+      <cityStateZip>Mead NE 61234</cityStateZip>
+    </address>
+    <sales/>
+  </item>
+  <item>
+    <storeCode>9f352c</storeCode>
+    <manager>
+      <uuid>fdce2d71-7a42-42c8-b6a3-53dad5d21194</uuid>
+      <firstName>Marshall</firstName>
+      <lastName>Lee</lastName>
+      <address>
+        <street>4 Mcguire Drive</street>
+        <city>Austin</city>
+        <state>TX</state>
+        <zip>78715</zip>
+        <cityStateZip>Austin TX 78715</cityStateZip>
+      </address>
+      <name>Lee, Marshall</name>
+      <formattedInfo>Lee, Marshall (fdce2d71-7a42-42c8-b6a3-53dad5d21194)
+	[mlee@nightosphere.com]
+	4 Mcguire Drive
+	Austin TX 78715
+</formattedInfo>
+      <emails>
+        <email>mlee@nightosphere.com</email>
+      </emails>
+    </manager>
+    <address>
+      <street>4242 A Street</street>
+      <city>Omaha</city>
+      <state>NE</state>
+      <zip>68117</zip>
+      <cityStateZip>Omaha NE 68117</cityStateZip>
+    </address>
+    <sales/>
+  </item>
+</Values>

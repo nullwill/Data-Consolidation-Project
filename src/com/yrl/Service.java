@@ -15,13 +15,13 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 public class Service extends Item {
 	private Double costPerHour;
 	private Double hoursBilled;
-	private String employeeUuid;
+	private Person employee;
 
-	public Service(String itemCode, String name, Double costPerHour, Double hoursBilled, String employeeUuid) {
+	public Service(String itemCode, String name, Double costPerHour, Double hoursBilled, Person employee) {
 		super(itemCode, name);
 		this.costPerHour = costPerHour;
 		this.hoursBilled = hoursBilled;
-		this.employeeUuid = employeeUuid;
+		this.employee = employee;
 	}
 	
 	@JsonIgnore
@@ -35,8 +35,8 @@ public class Service extends Item {
 
 	
 	@JsonIgnore
-	public String getEmployeeUuid() {
-		return employeeUuid;
+	public Person getEmployee() {
+		return employee;
 	}
 	
 	@Override

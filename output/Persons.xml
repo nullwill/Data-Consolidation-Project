@@ -1,18 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<ArrayList>
+<Values>
   <item>
-    <uuid>51978bc2-f50e-436e-b33d-b6b65516184c</uuid>
-    <firstName>Martin</firstName>
-    <lastName>Mertens</lastName>
+    <uuid>fdce2d71-7a42-42c8-b6a3-53dad5d21194</uuid>
+    <firstName>Marshall</firstName>
+    <lastName>Lee</lastName>
     <address>
-      <street>7031 Dawn Point</street>
-      <city>Atlanta</city>
-      <state>GA</state>
-      <zip>30380</zip>
+      <street>4 Mcguire Drive</street>
+      <city>Austin</city>
+      <state>TX</state>
+      <zip>78715</zip>
+      <cityStateZip>Austin TX 78715</cityStateZip>
     </address>
-    <name>Mertens, Martin</name>
+    <name>Lee, Marshall</name>
+    <formattedInfo>Lee, Marshall (fdce2d71-7a42-42c8-b6a3-53dad5d21194)
+	[mlee@nightosphere.com]
+	4 Mcguire Drive
+	Austin TX 78715
+</formattedInfo>
     <emails>
-      <email>mmertens@citadel.gov</email>
+      <email>mlee@nightosphere.com</email>
     </emails>
   </item>
   <item>
@@ -24,25 +30,56 @@
       <city>Tucson</city>
       <state>AZ</state>
       <zip>85710</zip>
+      <cityStateZip>Tucson AZ 85710</cityStateZip>
     </address>
     <name>Giovanni, Moe</name>
+    <formattedInfo>Giovanni, Moe (65405595-a97d-4939-adf4-71dcc2ff7b3d)
+	[pres@moco.com]
+	3 Merchant Court
+	Tucson AZ 85710
+</formattedInfo>
     <emails>
       <email>pres@moco.com</email>
     </emails>
   </item>
   <item>
-    <uuid>7b70a695-33c1-4a1a-9c95-51054f4017f6</uuid>
-    <firstName>Finn</firstName>
-    <lastName>Mertens</lastName>
+    <uuid>d6388b8b-b36b-4ca0-9f3d-48e86e78f79f</uuid>
+    <firstName>Marceline</firstName>
+    <lastName>Abadeer</lastName>
     <address>
-      <street>7 Leroy Hill</street>
-      <city>Huntington</city>
-      <state>WV</state>
-      <zip>25705</zip>
+      <street>6756 Schiller Hill</street>
+      <city>New Castle</city>
+      <state>PA</state>
+      <zip>16107</zip>
+      <cityStateZip>New Castle PA 16107</cityStateZip>
     </address>
-    <name>Mertens, Finn</name>
+    <name>Abadeer, Marceline</name>
+    <formattedInfo>Abadeer, Marceline (d6388b8b-b36b-4ca0-9f3d-48e86e78f79f)
+	[]
+	6756 Schiller Hill
+	New Castle PA 16107
+</formattedInfo>
+    <emails/>
+  </item>
+  <item>
+    <uuid>961b7c38-6c9b-463c-8a8d-a784fd0afd9c</uuid>
+    <firstName>Fionna</firstName>
+    <lastName>Campbell</lastName>
+    <address>
+      <street>059 Lawn Plaza</street>
+      <city>Milwaukee</city>
+      <state>WI</state>
+      <zip>53220</zip>
+      <cityStateZip>Milwaukee WI 53220</cityStateZip>
+    </address>
+    <name>Campbell, Fionna</name>
+    <formattedInfo>Campbell, Fionna (961b7c38-6c9b-463c-8a8d-a784fd0afd9c)
+	[cakeisawesome@ooo.com]
+	059 Lawn Plaza
+	Milwaukee WI 53220
+</formattedInfo>
     <emails>
-      <email>fth@gmail.com</email>
+      <email>cakeisawesome@ooo.com</email>
     </emails>
   </item>
   <item>
@@ -54,43 +91,17 @@
       <city>San Diego</city>
       <state>CA</state>
       <zip>92153</zip>
+      <cityStateZip>San Diego CA 92153</cityStateZip>
     </address>
     <name>Campbell, Minerva</name>
+    <formattedInfo>Campbell, Minerva (80ff9b2b-715a-4833-b56a-e81a987e0ac8)
+	[drcampbell@theisland.com, minerva@ooo.com]
+	76 Meadow Valley Circle
+	San Diego CA 92153
+</formattedInfo>
     <emails>
       <email>drcampbell@theisland.com</email>
       <email>minerva@ooo.com</email>
-    </emails>
-  </item>
-  <item>
-    <uuid>840397ce-4ea9-401d-9afd-bd8c0b68f4fd</uuid>
-    <firstName>Simon</firstName>
-    <lastName>Petrikov</lastName>
-    <address>
-      <street>91 Graedel Street</street>
-      <city>Ocala</city>
-      <state>FL</state>
-      <zip>34474</zip>
-    </address>
-    <name>Petrikov, Simon</name>
-    <emails>
-      <email>drpet@unl.edu</email>
-      <email>iking@ooo.com</email>
-      <email>spetrikov@unl.edu</email>
-    </emails>
-  </item>
-  <item>
-    <uuid>961b7c38-6c9b-463c-8a8d-a784fd0afd9c</uuid>
-    <firstName>Fionna</firstName>
-    <lastName>Campbell</lastName>
-    <address>
-      <street>059 Lawn Plaza</street>
-      <city>Milwaukee</city>
-      <state>WI</state>
-      <zip>53220</zip>
-    </address>
-    <name>Campbell, Fionna</name>
-    <emails>
-      <email>cakeisawesome@ooo.com</email>
     </emails>
   </item>
   <item>
@@ -102,8 +113,14 @@
       <city>Migrate</city>
       <state>KY</state>
       <zip>41905</zip>
+      <cityStateZip>Migrate KY 41905</cityStateZip>
     </address>
     <name>Grof, Bety</name>
+    <formattedInfo>Grof, Bety (a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7)
+	[bgrof@gmail.com, bgrof2@unl.edu]
+	7233 Jenna Road
+	Migrate KY 41905
+</formattedInfo>
     <emails>
       <email>bgrof@gmail.com</email>
       <email>bgrof2@unl.edu</email>
@@ -118,38 +135,81 @@
       <city>Pensacola</city>
       <state>FL</state>
       <zip>32505</zip>
+      <cityStateZip>Pensacola FL 32505</cityStateZip>
     </address>
     <name>Bubblegum, Bonnibel</name>
+    <formattedInfo>Bubblegum, Bonnibel (d2e84b16-b74e-4c28-90fc-585a3ec2a35e)
+	[pbubbs@ooo.com]
+	9 Marquette Point
+	Pensacola FL 32505
+</formattedInfo>
     <emails>
       <email>pbubbs@ooo.com</email>
     </emails>
   </item>
   <item>
-    <uuid>d6388b8b-b36b-4ca0-9f3d-48e86e78f79f</uuid>
-    <firstName>Marceline</firstName>
-    <lastName>Abadeer</lastName>
+    <uuid>7b70a695-33c1-4a1a-9c95-51054f4017f6</uuid>
+    <firstName>Finn</firstName>
+    <lastName>Mertens</lastName>
     <address>
-      <street>6756 Schiller Hill</street>
-      <city>New Castle</city>
-      <state>PA</state>
-      <zip>16107</zip>
+      <street>7 Leroy Hill</street>
+      <city>Huntington</city>
+      <state>WV</state>
+      <zip>25705</zip>
+      <cityStateZip>Huntington WV 25705</cityStateZip>
     </address>
-    <name>Abadeer, Marceline</name>
-    <emails/>
-  </item>
-  <item>
-    <uuid>fdce2d71-7a42-42c8-b6a3-53dad5d21194</uuid>
-    <firstName>Marshall</firstName>
-    <lastName>Lee</lastName>
-    <address>
-      <street>4 Mcguire Drive</street>
-      <city>Austin</city>
-      <state>TX</state>
-      <zip>78715</zip>
-    </address>
-    <name>Lee, Marshall</name>
+    <name>Mertens, Finn</name>
+    <formattedInfo>Mertens, Finn (7b70a695-33c1-4a1a-9c95-51054f4017f6)
+	[fth@gmail.com]
+	7 Leroy Hill
+	Huntington WV 25705
+</formattedInfo>
     <emails>
-      <email>mlee@nightosphere.com</email>
+      <email>fth@gmail.com</email>
     </emails>
   </item>
-</ArrayList>
+  <item>
+    <uuid>51978bc2-f50e-436e-b33d-b6b65516184c</uuid>
+    <firstName>Martin</firstName>
+    <lastName>Mertens</lastName>
+    <address>
+      <street>7031 Dawn Point</street>
+      <city>Atlanta</city>
+      <state>GA</state>
+      <zip>30380</zip>
+      <cityStateZip>Atlanta GA 30380</cityStateZip>
+    </address>
+    <name>Mertens, Martin</name>
+    <formattedInfo>Mertens, Martin (51978bc2-f50e-436e-b33d-b6b65516184c)
+	[mmertens@citadel.gov]
+	7031 Dawn Point
+	Atlanta GA 30380
+</formattedInfo>
+    <emails>
+      <email>mmertens@citadel.gov</email>
+    </emails>
+  </item>
+  <item>
+    <uuid>840397ce-4ea9-401d-9afd-bd8c0b68f4fd</uuid>
+    <firstName>Simon</firstName>
+    <lastName>Petrikov</lastName>
+    <address>
+      <street>91 Graedel Street</street>
+      <city>Ocala</city>
+      <state>FL</state>
+      <zip>34474</zip>
+      <cityStateZip>Ocala FL 34474</cityStateZip>
+    </address>
+    <name>Petrikov, Simon</name>
+    <formattedInfo>Petrikov, Simon (840397ce-4ea9-401d-9afd-bd8c0b68f4fd)
+	[drpet@unl.edu, iking@ooo.com, spetrikov@unl.edu]
+	91 Graedel Street
+	Ocala FL 34474
+</formattedInfo>
+    <emails>
+      <email>drpet@unl.edu</email>
+      <email>iking@ooo.com</email>
+      <email>spetrikov@unl.edu</email>
+    </emails>
+  </item>
+</Values>

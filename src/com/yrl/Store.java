@@ -32,6 +32,10 @@ public class Store implements Comparable<Store>{
 		return address;
 	}
 	
+	public void addSale(Sale sale) {
+		sales.add(sale);
+	}
+	
 	public List<Sale> getSales() {
 		return sales;
 	}
@@ -39,6 +43,6 @@ public class Store implements Comparable<Store>{
 
 	@Override
 	public int compareTo(Store o) {
-		return this.manager.getLastName().compareTo(o.manager.getLastName());
+		return this.storeCode.compareTo(o.storeCode);
 	}
 }

@@ -1,123 +1,141 @@
-{
-  "persons" : [ {
-    "uuid" : "51978bc2-f50e-436e-b33d-b6b65516184c",
-    "firstName" : "Martin",
-    "lastName" : "Mertens",
-    "emails" : [ "mmertens@citadel.gov" ],
-    "address" : {
-      "street" : "7031 Dawn Point",
-      "city" : "Atlanta",
-      "state" : "GA",
-      "zip" : 30380
-    },
-    "name" : "Mertens, Martin"
-  }, {
-    "uuid" : "65405595-a97d-4939-adf4-71dcc2ff7b3d",
-    "firstName" : "Moe",
-    "lastName" : "Giovanni",
-    "emails" : [ "pres@moco.com" ],
-    "address" : {
-      "street" : "3 Merchant Court",
-      "city" : "Tucson",
-      "state" : "AZ",
-      "zip" : 85710
-    },
-    "name" : "Giovanni, Moe"
-  }, {
-    "uuid" : "7b70a695-33c1-4a1a-9c95-51054f4017f6",
-    "firstName" : "Finn",
-    "lastName" : "Mertens",
-    "emails" : [ "fth@gmail.com" ],
-    "address" : {
-      "street" : "7 Leroy Hill",
-      "city" : "Huntington",
-      "state" : "WV",
-      "zip" : 25705
-    },
-    "name" : "Mertens, Finn"
-  }, {
-    "uuid" : "80ff9b2b-715a-4833-b56a-e81a987e0ac8",
-    "firstName" : "Minerva",
-    "lastName" : "Campbell",
-    "emails" : [ "drcampbell@theisland.com", "minerva@ooo.com" ],
-    "address" : {
-      "street" : "76 Meadow Valley Circle",
-      "city" : "San Diego",
-      "state" : "CA",
-      "zip" : 92153
-    },
-    "name" : "Campbell, Minerva"
-  }, {
-    "uuid" : "840397ce-4ea9-401d-9afd-bd8c0b68f4fd",
-    "firstName" : "Simon",
-    "lastName" : "Petrikov",
-    "emails" : [ "drpet@unl.edu", "iking@ooo.com", "spetrikov@unl.edu" ],
-    "address" : {
-      "street" : "91 Graedel Street",
-      "city" : "Ocala",
-      "state" : "FL",
-      "zip" : 34474
-    },
-    "name" : "Petrikov, Simon"
-  }, {
-    "uuid" : "961b7c38-6c9b-463c-8a8d-a784fd0afd9c",
-    "firstName" : "Fionna",
-    "lastName" : "Campbell",
-    "emails" : [ "cakeisawesome@ooo.com" ],
-    "address" : {
-      "street" : "059 Lawn Plaza",
-      "city" : "Milwaukee",
-      "state" : "WI",
-      "zip" : 53220
-    },
-    "name" : "Campbell, Fionna"
-  }, {
-    "uuid" : "a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7",
-    "firstName" : "Bety",
-    "lastName" : "Grof",
-    "emails" : [ "bgrof@gmail.com", "bgrof2@unl.edu" ],
-    "address" : {
-      "street" : "7233 Jenna Road",
-      "city" : "Migrate",
-      "state" : "KY",
-      "zip" : 41905
-    },
-    "name" : "Grof, Bety"
-  }, {
-    "uuid" : "d2e84b16-b74e-4c28-90fc-585a3ec2a35e",
-    "firstName" : "Bonnibel",
-    "lastName" : "Bubblegum",
-    "emails" : [ "pbubbs@ooo.com" ],
-    "address" : {
-      "street" : "9 Marquette Point",
-      "city" : "Pensacola",
-      "state" : "FL",
-      "zip" : 32505
-    },
-    "name" : "Bubblegum, Bonnibel"
-  }, {
-    "uuid" : "d6388b8b-b36b-4ca0-9f3d-48e86e78f79f",
-    "firstName" : "Marceline",
-    "lastName" : "Abadeer",
-    "emails" : [ ],
-    "address" : {
-      "street" : "6756 Schiller Hill",
-      "city" : "New Castle",
-      "state" : "PA",
-      "zip" : 16107
-    },
-    "name" : "Abadeer, Marceline"
-  }, {
-    "uuid" : "fdce2d71-7a42-42c8-b6a3-53dad5d21194",
-    "firstName" : "Marshall",
-    "lastName" : "Lee",
-    "emails" : [ "mlee@nightosphere.com" ],
-    "address" : {
-      "street" : "4 Mcguire Drive",
-      "city" : "Austin",
-      "state" : "TX",
-      "zip" : 78715
-    },
-    "name" : "Lee, Marshall"
-  } ]
-}
+[ {
+  "uuid" : "fdce2d71-7a42-42c8-b6a3-53dad5d21194",
+  "firstName" : "Marshall",
+  "lastName" : "Lee",
+  "emails" : [ "mlee@nightosphere.com" ],
+  "address" : {
+    "street" : "4 Mcguire Drive",
+    "city" : "Austin",
+    "state" : "TX",
+    "zip" : 78715,
+    "cityStateZip" : "Austin TX 78715"
+  },
+  "name" : "Lee, Marshall",
+  "formattedInfo" : "Lee, Marshall (fdce2d71-7a42-42c8-b6a3-53dad5d21194)\n\t[mlee@nightosphere.com]\n\t4 Mcguire Drive\n\tAustin TX 78715\n"
+}, {
+  "uuid" : "65405595-a97d-4939-adf4-71dcc2ff7b3d",
+  "firstName" : "Moe",
+  "lastName" : "Giovanni",
+  "emails" : [ "pres@moco.com" ],
+  "address" : {
+    "street" : "3 Merchant Court",
+    "city" : "Tucson",
+    "state" : "AZ",
+    "zip" : 85710,
+    "cityStateZip" : "Tucson AZ 85710"
+  },
+  "name" : "Giovanni, Moe",
+  "formattedInfo" : "Giovanni, Moe (65405595-a97d-4939-adf4-71dcc2ff7b3d)\n\t[pres@moco.com]\n\t3 Merchant Court\n\tTucson AZ 85710\n"
+}, {
+  "uuid" : "d6388b8b-b36b-4ca0-9f3d-48e86e78f79f",
+  "firstName" : "Marceline",
+  "lastName" : "Abadeer",
+  "emails" : [ ],
+  "address" : {
+    "street" : "6756 Schiller Hill",
+    "city" : "New Castle",
+    "state" : "PA",
+    "zip" : 16107,
+    "cityStateZip" : "New Castle PA 16107"
+  },
+  "name" : "Abadeer, Marceline",
+  "formattedInfo" : "Abadeer, Marceline (d6388b8b-b36b-4ca0-9f3d-48e86e78f79f)\n\t[]\n\t6756 Schiller Hill\n\tNew Castle PA 16107\n"
+}, {
+  "uuid" : "961b7c38-6c9b-463c-8a8d-a784fd0afd9c",
+  "firstName" : "Fionna",
+  "lastName" : "Campbell",
+  "emails" : [ "cakeisawesome@ooo.com" ],
+  "address" : {
+    "street" : "059 Lawn Plaza",
+    "city" : "Milwaukee",
+    "state" : "WI",
+    "zip" : 53220,
+    "cityStateZip" : "Milwaukee WI 53220"
+  },
+  "name" : "Campbell, Fionna",
+  "formattedInfo" : "Campbell, Fionna (961b7c38-6c9b-463c-8a8d-a784fd0afd9c)\n\t[cakeisawesome@ooo.com]\n\t059 Lawn Plaza\n\tMilwaukee WI 53220\n"
+}, {
+  "uuid" : "80ff9b2b-715a-4833-b56a-e81a987e0ac8",
+  "firstName" : "Minerva",
+  "lastName" : "Campbell",
+  "emails" : [ "drcampbell@theisland.com", "minerva@ooo.com" ],
+  "address" : {
+    "street" : "76 Meadow Valley Circle",
+    "city" : "San Diego",
+    "state" : "CA",
+    "zip" : 92153,
+    "cityStateZip" : "San Diego CA 92153"
+  },
+  "name" : "Campbell, Minerva",
+  "formattedInfo" : "Campbell, Minerva (80ff9b2b-715a-4833-b56a-e81a987e0ac8)\n\t[drcampbell@theisland.com, minerva@ooo.com]\n\t76 Meadow Valley Circle\n\tSan Diego CA 92153\n"
+}, {
+  "uuid" : "a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7",
+  "firstName" : "Bety",
+  "lastName" : "Grof",
+  "emails" : [ "bgrof@gmail.com", "bgrof2@unl.edu" ],
+  "address" : {
+    "street" : "7233 Jenna Road",
+    "city" : "Migrate",
+    "state" : "KY",
+    "zip" : 41905,
+    "cityStateZip" : "Migrate KY 41905"
+  },
+  "name" : "Grof, Bety",
+  "formattedInfo" : "Grof, Bety (a74cc7d9-7ab5-47b8-84cd-9a9205f7ffe7)\n\t[bgrof@gmail.com, bgrof2@unl.edu]\n\t7233 Jenna Road\n\tMigrate KY 41905\n"
+}, {
+  "uuid" : "d2e84b16-b74e-4c28-90fc-585a3ec2a35e",
+  "firstName" : "Bonnibel",
+  "lastName" : "Bubblegum",
+  "emails" : [ "pbubbs@ooo.com" ],
+  "address" : {
+    "street" : "9 Marquette Point",
+    "city" : "Pensacola",
+    "state" : "FL",
+    "zip" : 32505,
+    "cityStateZip" : "Pensacola FL 32505"
+  },
+  "name" : "Bubblegum, Bonnibel",
+  "formattedInfo" : "Bubblegum, Bonnibel (d2e84b16-b74e-4c28-90fc-585a3ec2a35e)\n\t[pbubbs@ooo.com]\n\t9 Marquette Point\n\tPensacola FL 32505\n"
+}, {
+  "uuid" : "7b70a695-33c1-4a1a-9c95-51054f4017f6",
+  "firstName" : "Finn",
+  "lastName" : "Mertens",
+  "emails" : [ "fth@gmail.com" ],
+  "address" : {
+    "street" : "7 Leroy Hill",
+    "city" : "Huntington",
+    "state" : "WV",
+    "zip" : 25705,
+    "cityStateZip" : "Huntington WV 25705"
+  },
+  "name" : "Mertens, Finn",
+  "formattedInfo" : "Mertens, Finn (7b70a695-33c1-4a1a-9c95-51054f4017f6)\n\t[fth@gmail.com]\n\t7 Leroy Hill\n\tHuntington WV 25705\n"
+}, {
+  "uuid" : "51978bc2-f50e-436e-b33d-b6b65516184c",
+  "firstName" : "Martin",
+  "lastName" : "Mertens",
+  "emails" : [ "mmertens@citadel.gov" ],
+  "address" : {
+    "street" : "7031 Dawn Point",
+    "city" : "Atlanta",
+    "state" : "GA",
+    "zip" : 30380,
+    "cityStateZip" : "Atlanta GA 30380"
+  },
+  "name" : "Mertens, Martin",
+  "formattedInfo" : "Mertens, Martin (51978bc2-f50e-436e-b33d-b6b65516184c)\n\t[mmertens@citadel.gov]\n\t7031 Dawn Point\n\tAtlanta GA 30380\n"
+}, {
+  "uuid" : "840397ce-4ea9-401d-9afd-bd8c0b68f4fd",
+  "firstName" : "Simon",
+  "lastName" : "Petrikov",
+  "emails" : [ "drpet@unl.edu", "iking@ooo.com", "spetrikov@unl.edu" ],
+  "address" : {
+    "street" : "91 Graedel Street",
+    "city" : "Ocala",
+    "state" : "FL",
+    "zip" : 34474,
+    "cityStateZip" : "Ocala FL 34474"
+  },
+  "name" : "Petrikov, Simon",
+  "formattedInfo" : "Petrikov, Simon (840397ce-4ea9-401d-9afd-bd8c0b68f4fd)\n\t[drpet@unl.edu, iking@ooo.com, spetrikov@unl.edu]\n\t91 Graedel Street\n\tOcala FL 34474\n"
+} ]

@@ -1,18 +1,31 @@
 package com.yrl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
- * This is the file that contains the methods to collect, organize, and output the
- * sales report data. 
+ * This is the file that contains the methods to collect, organize, and output
+ * the sales report data.
  */
 
 public class SalesReport {
 
-	public static void printSummaryReport(String filename, List<Sale> sales, List<Person> people,
-			HashMap<String, Item> items, HashMap<String, List<Item>> soldItems) {
+	/**
+	 * This method prints the summary report to the system. It takes the sales,
+	 * people, items, and soldItems maps as input, formats them according to the
+	 * invoice #, Store Code, customer, number of items, tax and total price.
+	 * 
+	 * @param filename
+	 * @param sales
+	 * @param people
+	 * @param items
+	 * @param soldItems
+	 */
+	public static void printSummaryReport(String filename, HashMap<String, Sale> sales, HashMap<String, Person> people,
+			HashMap<String, Item> items) {
 		Integer allItems = 0;
 		Double allTotals = 0.0;
 		Double allTaxes = 0.0;
@@ -21,26 +34,20 @@ public class SalesReport {
 						+ "| Summary Report - By Total                                                              |\n"
 						+ "+----------------------------------------------------------------------------------------+");
 		System.out.println("Invoice #  Store      Customer             Num Items          Tax            Total");
-
-		for (Sale s : sales) {
-			Collections.sort(people, Person.cmpByUuid);
-			Person key = new Person(s.getCustomerUuid(), "", "", null, null);
-			int index = Collections.binarySearch(people, key, Person.cmpByUuid);
-			List<Item> saleItems = soldItems.get(s.getSaleCode());
+	
+		List<Sale> salesList = new ArrayList<>(sales.values());
+		Collections.sort(salesList);
+		
+		for (Sale s : salesList) {
 			Double totalTaxes = 0.0;
 			Double totalPrice = 0.0;
 			Integer numItems = 0;
-			if (saleItems != null) {
-				numItems = soldItems.get(s.getSaleCode()).size();
-				for (Item i : saleItems) {
-					totalTaxes += i.getTaxes();
-					totalPrice += i.getNetTotal();
-				}
+			numItems = s.getItems().size();
+			totalTaxes = s.getSaleTaxTotal();
+			totalPrice = s.getSaleGrandTotal();
 
-			}
-
-			System.out.printf("%-11s%-11s%-21s%-19d$%-15.2f$%.2f\n", s.getSaleCode(), s.getStoreCode(),
-					people.get(index).getName(), numItems, totalTaxes, totalPrice);
+			System.out.printf("%-11s%-11s%-21s%-19d$%-15.2f$%.2f\n", s.getSaleCode(), s.getStore().getStoreCode(),
+					s.getCustomer().getName(), numItems, totalTaxes, totalPrice);
 			allTotals += totalPrice;
 			allItems += numItems;
 			allTaxes += totalTaxes;
@@ -53,20 +60,22 @@ public class SalesReport {
 
 	}
 
-	public static void printStoresReport(String filename, List<Store> stores, HashMap<String, List<Item>> saleItems,
-			List<Person> people, List<Sale> sales) {
+	public static void printStoresReport(String filename, HashMap<String, Store> stores, HashMap<String, Person> people,
+			HashMap<String, Sale> sales) {
 		Double allTotal = 0.0;
 		Integer allItems = 0;
-		Collections.sort(stores);
 		System.out.println("+----------------------------------------------------------------+\n"
 				+ "| Store Sales Summary Report                                     |\n"
 				+ "+----------------------------------------------------------------+\n"
 				+ "Store      Manager                        # Sales    Grand Total  ");
-		for (Store s : stores) {
+		
+		TreeMap<String, Store> sortedStores = new TreeMap<>(stores);
+		
+		for (Store s : sortedStores.values()) {
 			Double total = 0.0;
 			List<Sale> storeSales = s.getSales();
 			for (Sale sale : storeSales) {
-				List<Item> items = saleItems.get(sale.getSaleCode());
+				List<Item> items = sale.getItems();
 				if (items != null) {
 					for (Item i : items) {
 						Item item = (Item) i;
@@ -85,23 +94,23 @@ public class SalesReport {
 		System.out.printf("%43d\t     $%10.2f\n\n", allItems, allTotal);
 	}
 
-	public static void printIndividualSalesData(String filename, List<Sale> sales, HashMap<String, Person> people,
-			HashMap<String, List<Item>> saleItems) {
-		for (Sale s : sales) {
+	public static void printIndividualSalesData(String filename, HashMap<String, Sale> sales,
+			HashMap<String, Person> people) {
+		for (Sale s : sales.values()) {
 			Double totalTaxes = 0.0;
 			Double totalPreTaxes = 0.0;
 			System.out.println("Sale     #" + s.getSaleCode());
-			System.out.println("Store    #" + s.getStoreCode());
+			System.out.println("Store    #" + s.getStore().getStoreCode());
 			System.out.println("Date      " + s.getDate());
 
-			Person customer = people.get(s.getCustomerUuid());
+			Person customer = s.getCustomer();
 			System.out.println("Customer:");
 			System.out.println(customer.getFormattedInfo());
 
-			Person salesPerson = people.get(s.getSalesPersonUuid());
+			Person salesPerson = s.getSalesPerson();
 			System.out.println("Sales Person:");
 			System.out.println(salesPerson.getFormattedInfo());
-			List<Item> items = saleItems.get(s.getSaleCode());
+			List<Item> items = sales.get(s.getSaleCode()).getItems();
 			Integer numItems = items != null ? items.size() : 0;
 
 			System.out.println("Items (" + numItems + ")\t\t\t\t\t\t\t     Tax       Total");
@@ -114,7 +123,7 @@ public class SalesReport {
 						System.out.print(" - Lease for " + l.getLeaseLength() + " months\n");
 					} else if (i instanceof Service) {
 						Service se = (Service) i;
-						System.out.print(" - Served by " + people.get(se.getEmployeeUuid()).getName() + "\n");
+						System.out.print(" - Served by " + se.getEmployee().getName() + "\n");
 						System.out.printf("  	%.2f hours @ $%.2f/hour\n", se.getHoursBilled(), se.getCostPerHour());
 					} else if (i instanceof DataPlan) {
 						DataPlan d = (DataPlan) i;
@@ -148,29 +157,16 @@ public class SalesReport {
 		String salesFile = "data/Sales.csv";
 		String soldItemsFile = "data/SaleItems.csv";
 
-		List<Person> people = DataLoader.loadPersonData(personsFile);
-		List<Store> stores = DataLoader.loadStoreData(storesFile, people);
+		HashMap<String, Person> people = DataLoader.loadPersonData(personsFile);
+		HashMap<String, Store> stores = DataLoader.loadStoreData(storesFile, people);
 		HashMap<String, Item> items = DataLoader.loadItemData(itemFile);
-		List<Sale> sales = DataLoader.loadSalesData(salesFile);
-		HashMap<String, List<Item>> soldItems = DataLoader.loadSaleItemsData(soldItemsFile, items, sales);
-
-		for (Sale sale : sales) {
-			for (Store store : stores) {
-				if (sale.getStoreCode().compareTo(store.getStoreCode()) == 0) {
-					store.getSales().add(sale);
-				}
-			}
-		}
-
-		HashMap<String, Person> peopleMap = new HashMap<String, Person>();
-		for (Person p : people) {
-			peopleMap.put(p.getUuid(), p);
-		}
+		HashMap<String, Sale> sales = DataLoader.loadSalesData(salesFile, people, stores);
+		DataLoader.loadSaleItemsData(soldItemsFile, items, sales, people);
 
 		System.out.println("Phase 1 output...");
-		printSummaryReport("output.txt", sales, people, items, soldItems);
-		printStoresReport("output.txt", stores, soldItems, people, sales);
-		printIndividualSalesData("output.txt", sales, peopleMap, soldItems);
+		printSummaryReport("output.txt", sales, people, items);
+		printStoresReport("output.txt", stores, people, sales);
+		printIndividualSalesData("output.txt", sales, people);
 
 	}
 }

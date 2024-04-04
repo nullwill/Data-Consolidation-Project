@@ -1,43 +1,41 @@
-{
-  "items" : [ {
-    "itemCode" : "e003",
-    "name" : "iPhone 11 hardcase",
-    "price" : 34.95
-  }, {
-    "itemCode" : "p003",
-    "name" : "Unlimited Daily",
-    "periodCost" : 50.0
-  }, {
-    "itemCode" : "p002",
-    "name" : "4G Basic",
-    "costPerGB" : 0.43
-  }, {
-    "itemCode" : "e001",
-    "name" : "iPhone 11",
-    "price" : 1200.0
-  }, {
-    "itemCode" : "p001",
-    "name" : "5G Deluxe",
-    "costPerGB" : 1.99
-  }, {
-    "itemCode" : "e002",
-    "name" : "Samsung Galaxy A21",
-    "price" : 99.99
-  }, {
-    "itemCode" : "s003",
-    "name" : "Delivery",
-    "costPerHour" : 59.99
-  }, {
-    "itemCode" : "p004",
-    "name" : "Unlimited talk/300 Text",
-    "periodCost" : 70.0
-  }, {
-    "itemCode" : "s002",
-    "name" : "Router Install",
-    "costPerHour" : 120.99
-  }, {
-    "itemCode" : "s001",
-    "name" : "Screen Repair",
-    "costPerHour" : 75.5
-  } ]
-}
+[ {
+  "itemCode" : "e003",
+  "name" : "iPhone 11 hardcase",
+  "price" : 34.95
+}, {
+  "itemCode" : "p003",
+  "name" : "Unlimited Daily",
+  "periodCost" : 50.0
+}, {
+  "itemCode" : "p002",
+  "name" : "4G Basic",
+  "costPerGB" : 0.43
+}, {
+  "itemCode" : "e001",
+  "name" : "iPhone 11",
+  "price" : 1200.0
+}, {
+  "itemCode" : "p001",
+  "name" : "5G Deluxe",
+  "costPerGB" : 1.99
+}, {
+  "itemCode" : "e002",
+  "name" : "Samsung Galaxy A21",
+  "price" : 99.99
+}, {
+  "itemCode" : "s003",
+  "name" : "Delivery",
+  "costPerHour" : 59.99
+}, {
+  "itemCode" : "p004",
+  "name" : "Unlimited talk/300 Text",
+  "periodCost" : 70.0
+}, {
+  "itemCode" : "s002",
+  "name" : "Router Install",
+  "costPerHour" : 120.99
+}, {
+  "itemCode" : "s001",
+  "name" : "Screen Repair",
+  "costPerHour" : 75.5
+} ]

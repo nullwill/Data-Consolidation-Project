@@ -10,17 +10,17 @@ import java.util.List;
 
 public class Sale implements Comparable<Sale> {
 	private String saleCode;
-	private String storeCode;
-	private String customerUuid;
-	private String salesPersonUuid;
+	private Store store;
+	private Person customer;
+	private Person salesPerson;
 	private List<Item> items;
 	private LocalDate date;
 	
-	public Sale(String saleCode, String storeCode, String customerUuid, String salesPersonUuid, LocalDate date, List<Item> items) {
+	public Sale(String saleCode, Store store, Person customer, Person salesPerson, LocalDate date, List<Item> items) {
 		this.saleCode = saleCode;
-		this.storeCode = storeCode;
-		this.customerUuid = customerUuid;
-		this.salesPersonUuid = salesPersonUuid;
+		this.store = store;
+		this.customer = customer;
+		this.salesPerson = salesPerson;
 		this.date = date;
 		this.items = items;
 	}
@@ -28,14 +28,14 @@ public class Sale implements Comparable<Sale> {
 	public String getSaleCode() {
 		return saleCode;
 	}
-	public String getStoreCode() {
-		return storeCode;
+	public Store getStore() {
+		return store;
 	}
-	public String getCustomerUuid() {
-		return customerUuid;
+	public Person getCustomer() {
+		return customer;
 	}
-	public String getSalesPersonUuid() {
-		return salesPersonUuid;
+	public Person getSalesPerson() {
+		return salesPerson;
 	}
 	public LocalDate getDate() {
 		return date;
@@ -66,11 +66,14 @@ public class Sale implements Comparable<Sale> {
 		
 		return total;
 	}
+	
+	public void addItem(Item item) {
+		items.add(item);
+	}
 
 	@Override
 	public int compareTo(Sale o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.saleCode.compareTo(o.saleCode);
 	}
 
 	
