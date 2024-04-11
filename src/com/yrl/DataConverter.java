@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
@@ -14,7 +12,6 @@ import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 /**
@@ -136,6 +133,8 @@ public class DataConverter {
 		
 //		pw.println(xmlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(items));
 		pw.close();
+		
+		DataLoader.getPersonData(1);
 //		persistJson(people, "persons", personsJson);
 //		persistJson(stores, "stores", storesJson);
 //		persistJson(items, "items", itemJson);

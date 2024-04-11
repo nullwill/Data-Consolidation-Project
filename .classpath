@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="lib/jaxb-runtime-4.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/jaxb-core-4.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/istack-commons-runtime-4.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-j-8.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
