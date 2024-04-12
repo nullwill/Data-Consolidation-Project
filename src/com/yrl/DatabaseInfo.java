@@ -8,12 +8,12 @@ public class DatabaseInfo {
 	/**
 	 * User name used to connect to the SQL server
 	 */
-	public static final String USERNAME = "waldag2";
+	public static final String USERNAME = "otrianagutierrez2";
 
 	/**
 	 * Password used to connect to the SQL server
 	 */
-	public static final String PASSWORD = "oophohM7eefa";
+	public static final String PASSWORD = "Ioriesohb5ai";
 
 	/**
 	 * Connection parameters that may be necessary for server configuration

@@ -45,6 +45,10 @@ public class Sale implements Comparable<Sale> {
 		return this.items;
 	}
 	
+	public void updateStore(Store store) {
+		this.store = store;
+	}
+	
 	public Double getSaleGrandTotal() {
 		Double total = 0.0;
 		if (this.items != null) {
