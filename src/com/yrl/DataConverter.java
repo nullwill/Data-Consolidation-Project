@@ -93,20 +93,11 @@ public class DataConverter {
 	}
 	
 	public static void main(String args[]) throws JsonProcessingException, FileNotFoundException {
-		String personsFile = "data/Persons.csv";
-		String storesFile  = "data/Stores.csv";
 		String itemFile   = "data/Items.csv";
 		
-		String personsJson = "output/Persons.json";
-		String storesJson  = "output/Stores.json";
-		String itemJson   = "output/Items.json";
 		
-		String personsXml = "output/Persons.xml";
-		String storesXml  = "output/Stores.xml";
 		String itemXml   = "output/Items.xml";
 		
-		HashMap<String, Person> people = DataLoader.loadPersonData(personsFile);
-		HashMap<String, Store> stores  = DataLoader.loadStoreData(storesFile, people);
 		HashMap<String, Item> items   = DataLoader.loadItemData(itemFile);
 		
 		HashMap<String, Item> itemsByType = new HashMap<String, Item>();
@@ -125,7 +116,6 @@ public class DataConverter {
 		
 		File f = new File(itemXml);
 		PrintWriter pw = new PrintWriter(f);
-		ObjectMapper mapper = new ObjectMapper();
 		XmlMapper xmlMapper = new XmlMapper();
 		
 		String xmlString = xmlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemsByType);

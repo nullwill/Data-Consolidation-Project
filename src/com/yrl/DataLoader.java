@@ -3,7 +3,6 @@ package com.yrl;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,12 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Author(s): Will Aldag & Oliver Triana
@@ -428,8 +423,8 @@ public class DataLoader {
 		return s;
 	}
 
-	public static List<Person> getAllPeople() {
-		List<Person> people = new ArrayList<>();
+	public static HashMap<String, Person> getAllPeople() {
+		HashMap<String, Person> people = new HashMap<String, Person>();
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
@@ -486,7 +481,7 @@ public class DataLoader {
 				Person person = new Person(uuid, firstName, lastName, a, emails);
 
 				// Add Person object to the list
-				people.add(person);
+				people.put(uuid, person);
 			}
 
 		} catch (SQLException e) {
@@ -526,196 +521,173 @@ public class DataLoader {
 		return people;
 	}
 
-	public static List<Store> getAllStores() {
-		List<Store> stores = new ArrayList<>();
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
-		} catch (SQLException e) {
-			System.out.println("SQLException: ");
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
+	public static HashMap<String, Store> getAllStores() {
+	    HashMap<String, Store> stores = new HashMap<>();
+	    Connection conn = null;
+	    try {
+	        conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+	    } catch (SQLException e) {
+	        System.out.println("SQLException: ");
+	        e.printStackTrace();
+	        throw new RuntimeException(e);
+	    }
 
-		String storeQuery = "SELECT storeId, storeCode, managerId, addressId FROM Store;";
-		String addressQuery = "SELECT * FROM Address WHERE addressId = ?";
-		String saleQuery = "SELECT * FROM Sale WHERE storeId = ?";
+	    String storeQuery = "SELECT s.storeId AS storeId, s.managerId AS managerId, s.storeCode AS storeCode, p.personUuid AS uuid, p.firstName AS firstName, p.lastName AS lastName,\n"
+	            + "ma.street AS mStreet, ma.city AS mCity, ma.state AS mState, ma.zipCode AS mZip, sa.street AS sStreet,\n"
+	            + "sa.city AS sCity, sa.state AS sState, sa.zipCode AS sZip\n"
+	            + "FROM Store s\n"
+	            + "JOIN Person p ON s.managerId = p.personId\n"
+	            + "JOIN Address ma ON s.managerId = ma.addressId\n"
+	            + "JOIN Address sa ON s.storeId = sa.addressId;";
 
-		PreparedStatement storePs = null;
-		PreparedStatement addressPs = null;
-		PreparedStatement salePs = null;
-		ResultSet storeRs = null;
-		ResultSet addressRs = null;
-		ResultSet saleRs = null;
+	    String saleQuery = "SELECT * FROM Sale WHERE storeId = ?";
+	    String saleItemQuery = "SELECT si.*, i.* FROM SaleItem si JOIN Item i ON si.itemId = i.itemId WHERE si.saleId = ?";
 
-		try {
-			// Retrieve all people
-			storePs = conn.prepareStatement(storeQuery);
-			storeRs = storePs.executeQuery();
+	    PreparedStatement storePs = null;
+	    PreparedStatement salePs = null;
+	    PreparedStatement saleItemPs = null;
+	    ResultSet storeRs = null;
+	    ResultSet saleRs = null;
+	    ResultSet saleItemRs = null;
 
-			while (storeRs.next()) {
-				int storeId = storeRs.getInt("storeId");
-				Address a = null;
-				// Create Person object
+	    try {
+	        storePs = conn.prepareStatement(storeQuery);
+	        storeRs = storePs.executeQuery();
 
-				// Retrieve emails for the current person
-				addressPs = conn.prepareStatement(addressQuery);
-				addressPs.setInt(1, storeId);
-				addressRs = addressPs.executeQuery();
-				if (addressRs.next()) {
-					String street = addressRs.getString("street");
-					String city = addressRs.getString("city");
-					String state = addressRs.getString("state");
-					Integer zipCode = addressRs.getInt("zipCode");
-					a = new Address(street, city, state, zipCode);
-				}
+	        while (storeRs.next()) {
+	            int storeId = storeRs.getInt("storeId");
+	            Address a = new Address(storeRs.getString("sStreet"), storeRs.getString("sCity"), storeRs.getString("sState"), storeRs.getInt("sZip"));
 
-				List<Sale> sales = new ArrayList<>();
-				salePs = conn.prepareStatement(saleQuery);
-				salePs.setInt(1, storeId);
-				saleRs = salePs.executeQuery();
-				while (saleRs.next()) {
-					String saleCode = saleRs.getString("saleCode");
-					LocalDate saleDate = saleRs.getDate("saleDate").toLocalDate();
-					Person customer = getPersonData(saleRs.getInt("customerId"));
-					Person salesPerson = getPersonData(saleRs.getInt("salesPersonId"));
-					Sale sale = new Sale(saleCode, null, customer, salesPerson, saleDate, null);
-					sales.add(sale);
-				}
-				// Associate emails with the Person object
-				String storeCode = storeRs.getString("storeCode");
-				Integer managerId = storeRs.getInt("managerId");
+	            List<Sale> sales = new ArrayList<>();
 
-				Person manager = getPersonData(managerId);
+	            salePs = conn.prepareStatement(saleQuery);
+	            salePs.setInt(1, storeId);
+	            saleRs = salePs.executeQuery();
+	            while (saleRs.next()) {
+	                int saleId = saleRs.getInt("saleId");
+	                String saleCode = saleRs.getString("saleCode");
+	                LocalDate saleDate = LocalDate.parse(saleRs.getString("saleDate"));
+	                Person customer = getPersonData(saleRs.getInt("customerId"));
+	                Person salesPerson = getPersonData(saleRs.getInt("salesPersonId"));
 
-				// Add Person object to the list
-				Store store = new Store(storeCode, manager, a, sales);
+	                saleItemPs = conn.prepareStatement(saleItemQuery);
+	                saleItemPs.setInt(1, saleId);
+	                saleItemRs = saleItemPs.executeQuery();
+	                List<Item> items = new ArrayList<>();
+	                while (saleItemRs.next()) {
+	                    String itemType = saleItemRs.getString("itemType");
+	              
+	                    switch (itemType) {
+	                        case "D":
+	                            DataPlan d = new DataPlan(
+	                                    saleItemRs.getString("itemCode"),
+	                                    saleItemRs.getString("itemName"),
+	                                    saleItemRs.getDouble("baseCost"),
+	                                    saleItemRs.getDouble("numGB")
+	                            );
+	                            items.add(d);
+	                            break;
+	                        case "P":
+	                        	if (saleItemRs.getString("startDate") != null) {
+	                        		Leased l = new Leased(
+	                        				saleItemRs.getString("itemCode"),
+	                        				saleItemRs.getString("itemName"),
+	                        				saleItemRs.getDouble("baseCost"),
+	                        				saleItemRs.getDate("startDate").toLocalDate(),
+	                        				saleItemRs.getDate("endDate").toLocalDate()
+	                        				);
+	                        		items.add(l);
+	                        	} else {
+	                        		Purchased p = new Purchased(
+	                        				saleItemRs.getString("itemCode"),
+	                        				saleItemRs.getString("itemName"),
+	                        				saleItemRs.getDouble("baseCost")
+	                        				);
+	                        		items.add(p);
+	                        	}
+	                            break;
+	                        case "S":
+//	                        	System.out.println(saleItemRs.getInt("employeeId"));
+	                            Service s = new Service(
+	                                    saleItemRs.getString("itemCode"),
+	                                    saleItemRs.getString("itemName"),
+	                                    saleItemRs.getDouble("baseCost"),
+	                                    saleItemRs.getDouble("numHours"),
+	                                    
+	                                    getPersonData(saleItemRs.getInt("employeeId"))
+	                            );
+	                            items.add(s);
+	                            break;
+	                        case "V":
+	                            VoicePlan v = new VoicePlan(
+	                                    saleItemRs.getString("itemCode"),
+	                                    saleItemRs.getString("itemName"),
+	                                    saleItemRs.getDouble("baseCost"),
+	                                    saleItemRs.getString("phoneNumber"),
+	                                    saleItemRs.getDouble("numDays")
+	                            );
+	                            items.add(v);
+	                            break;
+	                            
+	                    }
+	                }
 
-				for (Sale s : sales) {
-					s.updateStore(store);
-				}
+	                Sale sale = new Sale(saleCode, null, customer, salesPerson, saleDate, items);
+	                
+	                sales.add(sale);
+	            }
 
-				stores.add(store);
-			}
+	            String storeCode = storeRs.getString("storeCode");
+	            Integer managerId = storeRs.getInt("managerId");
 
-		} catch (SQLException e) {
-			System.out.println("SQLException: ");
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			try {
-				if (storeRs != null) {
-					storeRs.close();
-				}
-				if (storePs != null) {
-					storePs.close();
-				}
-				if (addressPs != null) {
-					addressPs.close();
-				}
-				if (addressRs != null) {
-					addressRs.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				System.out.println("SQLException: ");
-				e.printStackTrace();
-				throw new RuntimeException(e);
-			}
-		}
+	            Person manager = getPersonData(managerId);
 
-		return stores;
+	            Store store = new Store(storeCode, manager, a, sales);
+
+	            stores.put(storeCode, store);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("SQLException: ");
+	        e.printStackTrace();
+	        throw new RuntimeException(e);
+	    } finally {
+	        try {
+	            if (storeRs != null) {
+	                storeRs.close();
+	            }
+	            if (storePs != null) {
+	                storePs.close();
+	            }
+	            if (salePs != null) {
+	                salePs.close();
+	            }
+	            if (saleItemPs != null) {
+	                saleItemPs.close();
+	            }
+	            if (saleRs != null) {
+	                saleRs.close();
+	            }
+	            if (saleItemRs != null) {
+	                saleItemRs.close();
+	            }
+	            if (conn != null) {
+	                conn.close();
+	            }
+	        } catch (SQLException e) {
+	            System.out.println("SQLException: ");
+	            e.printStackTrace();
+	            throw new RuntimeException(e);
+	        }
+	    }
+
+	    return stores;
 	}
 
-	public static Item getItemData(int itemId) {
-		Connection conn = null;
-		try {
-			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
-		} catch (SQLException e) {
-			System.out.println("SQLException: ");
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
 
-		String query = "SELECT Item.itemCode, Item.itemName, Item.itemType, "
-				+ "		SaleItem.saleItemId, SaleItem.saleId, SaleItem.itemId, SaleItem.startDate,"
-				+ "     SaleItem.endDate, SaleItem.employeeId, SaleItem.baseCost, SaleItem.numGB,"
-				+ "     SaleItem.numHours, SaleItem.numDays, SaleItem.phoneNumber " + "FROM Item "
-				+ "		LEFT JOIN SaleItem ON Item.itemId = SaleItem.itemId " + "WHERE Item.itemId = ?;";
 
-		PreparedStatement itemsPs = null;
-		ResultSet itemsRs = null;
-
-		try {
-			itemsPs = conn.prepareStatement(query);
-			itemsPs.setInt(1, itemId);
-			itemsRs = itemsPs.executeQuery();
-
-			while (itemsRs.next()) {
-
-				String itemCode = itemsRs.getString("itemCode");
-				String itemName = itemsRs.getString("itemName");
-				String itemType = itemsRs.getString("itemType");
-
-				String startDate = itemsRs.getString("startDate");
-				String endDate = itemsRs.getString("endDate");
-				String employeeId = itemsRs.getString("employeeId");
-				Double baseCost = itemsRs.getDouble("baseCost");
-				Double gb = itemsRs.getDouble("numGB");
-				Double hours = itemsRs.getDouble("numHours");
-				Double days = itemsRs.getDouble("numDays");
-				String phoneNumber = itemsRs.getString("phoneNumber");
-
-				if (itemType.equals("D")) {
-					DataPlan d = new DataPlan(itemCode, itemName, baseCost, gb);
-					return d;
-				}
-				if (itemType.equals("P")) {
-					Product p = new Product(itemCode, itemName, baseCost);
-					return p;
-				}
-				if (itemType.equals("S")) {
-					Service e = new Service(itemCode, itemName, baseCost, hours, null);
-					return e;
-				}
-				if (itemType.equals("V")) {
-					VoicePlan v = new VoicePlan(itemCode, itemName, baseCost, phoneNumber, days);
-					return v;
-				}
-
-			}
-
-			throw new IllegalStateException("No such item in database with id = " + itemId);
-
-		} catch (SQLException e) {
-			System.out.println("SQLException: ");
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} finally {
-			try {
-
-				if (itemsRs != null) {
-					itemsRs.close();
-				}
-				if (itemsPs != null) {
-					itemsPs.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				System.out.println("SQLException: ");
-				e.printStackTrace();
-				throw new RuntimeException(e);
-			}
-		}
-
-	}
-
-	public static List<Item> getAllItems() {
-		List<Item> items = new ArrayList<>();
+	public static HashMap<String, Item> getAllItems() {
+		HashMap<String, Item> items = new HashMap<String, Item>();
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
@@ -744,9 +716,9 @@ public class DataLoader {
 				String itemName = itemsRs.getString("itemName");
 				String itemType = itemsRs.getString("itemType");
 
-				String startDate = itemsRs.getString("startDate");
-				String endDate = itemsRs.getString("endDate");
-				String employeeId = itemsRs.getString("employeeId");
+//				String startDate = itemsRs.getString("startDate");
+//				String endDate = itemsRs.getString("endDate");
+//				String employeeId = itemsRs.getString("employeeId");
 				Double baseCost = itemsRs.getDouble("baseCost");
 				Double gb = itemsRs.getDouble("numGB");
 				Double hours = itemsRs.getDouble("numHours");
@@ -755,19 +727,19 @@ public class DataLoader {
 
 				if (itemType.equals("D")) {
 					DataPlan d = new DataPlan(itemCode, itemName, baseCost, gb);
-					items.add(d);
+					items.put(itemCode, d);
 				}
 				if (itemType.equals("P")) {
 					Product p = new Product(itemCode, itemName, baseCost);
-					items.add(p);
+					items.put(itemCode, p);
 				}
 				if (itemType.equals("S")) {
 					Service e = new Service(itemCode, itemName, baseCost, hours, null);
-					items.add(e);
+					items.put(itemCode, e);
 				}
 				if (itemType.equals("V")) {
 					VoicePlan v = new VoicePlan(itemCode, itemName, baseCost, phoneNumber, days);
-					items.add(v);
+					items.put(itemCode, v);
 				}
 
 			}
@@ -822,7 +794,6 @@ public class DataLoader {
 
 		try {
 			ps = conn.prepareStatement(query);
-			//ps.setInt(1, saleId);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -870,6 +841,136 @@ public class DataLoader {
 		}
 		return s;
 	}
+	
+	public static HashMap<String, Sale> getAllSales() {
+        HashMap<String, Sale> sales = new HashMap<String, Sale>();
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
+        } catch (SQLException e) {
+            System.out.println("SQLException: ");
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        String saleQuery = "SELECT * FROM Sale";
+        String saleItemQuery = "SELECT si.*, i.* FROM SaleItem si JOIN Item i ON si.itemId = i.itemId WHERE si.saleId = ?";
+        
+        PreparedStatement salePs = null;
+        PreparedStatement saleItemPs = null;
+        ResultSet saleRs = null;
+        ResultSet saleItemRs = null;
+
+        try {
+            salePs = conn.prepareStatement(saleQuery);
+            saleRs = salePs.executeQuery();
+
+            while (saleRs.next()) {
+                int saleId = saleRs.getInt("saleId");
+                String saleCode = saleRs.getString("saleCode");
+                LocalDate saleDate = LocalDate.parse(saleRs.getString("saleDate"));
+                Person customer = DataLoader.getPersonData(saleRs.getInt("customerId"));
+                Person salesPerson = DataLoader.getPersonData(saleRs.getInt("salesPersonId"));
+                int storeId = saleRs.getInt("storeId");
+                Store store = getStoreData(storeId);
+
+                saleItemPs = conn.prepareStatement(saleItemQuery);
+                saleItemPs.setInt(1, saleId);
+                saleItemRs = saleItemPs.executeQuery();
+                List<Item> items = new ArrayList<>();
+                while (saleItemRs.next()) {
+                    String itemType = saleItemRs.getString("itemType");
+                    switch (itemType) {
+                        case "D":
+                            DataPlan d = new DataPlan(
+                                    saleItemRs.getString("itemCode"),
+                                    saleItemRs.getString("itemName"),
+                                    saleItemRs.getDouble("baseCost"),
+                                    saleItemRs.getDouble("numGB")
+                            );
+                            items.add(d);
+                            break;
+                        case "P":
+                            if (saleItemRs.getString("startDate") != null) {
+                                Leased l = new Leased(
+                                        saleItemRs.getString("itemCode"),
+                                        saleItemRs.getString("itemName"),
+                                        saleItemRs.getDouble("baseCost"),
+                                        saleItemRs.getDate("startDate").toLocalDate(),
+                                        saleItemRs.getDate("endDate").toLocalDate()
+                                );
+                                items.add(l);
+                            } else {
+                                Purchased p = new Purchased(
+                                        saleItemRs.getString("itemCode"),
+                                        saleItemRs.getString("itemName"),
+                                        saleItemRs.getDouble("baseCost")
+                                );
+                                items.add(p);
+                            }
+                            break;
+                        case "S":
+                            Service s = new Service(
+                                    saleItemRs.getString("itemCode"),
+                                    saleItemRs.getString("itemName"),
+                                    saleItemRs.getDouble("baseCost"),
+                                    saleItemRs.getDouble("numHours"),
+                                    DataLoader.getPersonData(saleItemRs.getInt("employeeId"))
+                            );
+                            items.add(s);
+                            break;
+                        case "V":
+                            VoicePlan v = new VoicePlan(
+                                    saleItemRs.getString("itemCode"),
+                                    saleItemRs.getString("itemName"),
+                                    saleItemRs.getDouble("baseCost"),
+                                    saleItemRs.getString("phoneNumber"),
+                                    saleItemRs.getDouble("numDays")
+                            );
+                            items.add(v);
+                            break;
+                    }
+                }
+
+                Sale sale = new Sale(saleCode, store, customer, salesPerson, saleDate, items);
+                sales.put(saleCode, sale);
+            }
+
+            if (sales.isEmpty()) {
+                throw new IllegalStateException("No sales found in the database.");
+            }
+        } catch (SQLException e) {
+            System.out.println("SQLException: ");
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (saleRs != null) {
+                    saleRs.close();
+                }
+                if (salePs != null) {
+                    salePs.close();
+                }
+                if (saleItemPs != null) {
+                    saleItemPs.close();
+                }
+                if (saleItemRs != null) {
+                    saleItemRs.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("SQLException: ");
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        }
+        return sales;
+    }
+
+	
+	
 }
 
 	

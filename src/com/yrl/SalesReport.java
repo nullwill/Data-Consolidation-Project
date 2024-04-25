@@ -36,6 +36,7 @@ public class SalesReport {
 		System.out.println("Invoice #  Store      Customer             Num Items          Tax            Total");
 	
 		List<Sale> salesList = new ArrayList<>(sales.values());
+		
 		Collections.sort(salesList);
 		
 		for (Sale s : salesList) {
@@ -68,6 +69,7 @@ public class SalesReport {
 				+ "| Store Sales Summary Report                                     |\n"
 				+ "+----------------------------------------------------------------+\n"
 				+ "Store      Manager                        # Sales    Grand Total  ");
+	
 		
 		TreeMap<String, Store> sortedStores = new TreeMap<>(stores);
 		
@@ -151,16 +153,13 @@ public class SalesReport {
 	}
 
 	public static void main(String args[]) {
-		String personsFile = "data/Persons.csv";
-		String storesFile = "data/Stores.csv";
-		String itemFile = "data/Items.csv";
-		String salesFile = "data/Sales.csv";
 		String soldItemsFile = "data/SaleItems.csv";
 
-		HashMap<String, Person> people = DataLoader.loadPersonData(personsFile);
-		HashMap<String, Store> stores = DataLoader.loadStoreData(storesFile, people);
-		HashMap<String, Item> items = DataLoader.loadItemData(itemFile);
-		HashMap<String, Sale> sales = DataLoader.loadSalesData(salesFile, people, stores);
+		HashMap<String, Person> people = DataLoader.getAllPeople();
+		HashMap<String, Store> stores = DataLoader.getAllStores();
+		HashMap<String, Item> items = DataLoader.getAllItems();
+		HashMap<String, Sale> sales = DataLoader.getAllSales();
+		
 		DataLoader.loadSaleItemsData(soldItemsFile, items, sales, people);
 
 		System.out.println("Phase 1 output...");
