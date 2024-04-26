@@ -160,9 +160,8 @@ public class SalesReport {
 		HashMap<String, Item> items = DataLoader.getAllItems();
 		HashMap<String, Sale> sales = DataLoader.getAllSales();
 		
-		DataLoader.loadSaleItemsData(soldItemsFile, items, sales, people);
+//		DataLoader.loadSaleItemsData(soldItemsFile, items, sales, people);
 
-		System.out.println("Phase 1 output...");
 		printSummaryReport("output.txt", sales, people, items);
 		printStoresReport("output.txt", stores, people, sales);
 		printIndividualSalesData("output.txt", sales, people);

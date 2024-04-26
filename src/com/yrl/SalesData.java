@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.List;
+//import java.util.Arrays;
+//import java.util.List;
 
 /**
  * This is a collection of utility methods that define a general API for
@@ -25,16 +25,18 @@ public class SalesData {
 	 */
 	public static int getPersonIdFromUuid(String personUuid) {
 		Connection conn;
-		int personId;
+		int personId = -1;
 		try {
 			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
 			
-			String query = "SELECT Person.personId as personId from Person where personUuid = ?;";
+			String query = "SELECT Person.personId as personId from Person where personUuid = ?";
 			PreparedStatement psQuery = conn.prepareStatement(query);
 			psQuery.setString(1, personUuid);
 			ResultSet rsQuery = psQuery.executeQuery();
 			
-			personId = rsQuery.getInt("personId");
+			if (rsQuery.next()) {
+	            personId = rsQuery.getInt("personId");
+	        }
 			
 			rsQuery.close();
 			psQuery.close();
@@ -55,7 +57,7 @@ public class SalesData {
 	 */
 	public static int getStoreIdFromStoreCode(String storeCode) {
 		Connection conn;
-		int storeId;
+		int storeId = -1;
 		try {
 			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
 			
@@ -64,7 +66,9 @@ public class SalesData {
 			psQuery.setString(1, storeCode);
 			ResultSet rsQuery = psQuery.executeQuery();
 			
-			storeId = rsQuery.getInt("storeId");
+			if (rsQuery.next()) {
+				storeId = rsQuery.getInt("storeId");
+	        }
 			
 			rsQuery.close();
 			psQuery.close();
@@ -85,7 +89,7 @@ public class SalesData {
 	 */
 	public static int getSaleIdFromSaleCode(String saleCode) {
 		Connection conn;
-		int saleId;
+		int saleId = -1;
 		try {
 			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
 			
@@ -94,7 +98,9 @@ public class SalesData {
 			psQuery.setString(1, saleCode);
 			ResultSet rsQuery = psQuery.executeQuery();
 			
-			saleId = rsQuery.getInt("saleId");
+			if (rsQuery.next()) {
+				saleId = rsQuery.getInt("saleId");
+	        }
 			
 			rsQuery.close();
 			psQuery.close();
@@ -115,7 +121,7 @@ public class SalesData {
 	 */
 	public static int getItemIdFromItemCode(String itemCode) {
 		Connection conn;
-		int itemId;
+		int itemId = -1;
 		try {
 			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
 			
@@ -124,7 +130,9 @@ public class SalesData {
 			psQuery.setString(1, itemCode);
 			ResultSet rsQuery = psQuery.executeQuery();
 			
-			itemId = rsQuery.getInt("itemId");
+			if (rsQuery.next()) {
+				itemId = rsQuery.getInt("itemId");
+			}
 			
 			rsQuery.close();
 			psQuery.close();
@@ -140,8 +148,23 @@ public class SalesData {
 	 * Removes all records from all tables in the database.
 	 */
 	public static void clearDatabase() {
-		//TODO: implement
-	}
+		String[] tables = {"SaleItem", "Sale", "Item", "Email", "Store", "Person", "Address"};
+        String deleteSQL = "DELETE FROM %s";
+
+        try (Connection connection = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD)) {
+            Statement statement = connection.createStatement();
+            
+            for (String table : tables) {
+                String sql = String.format(deleteSQL, table);
+                statement.executeUpdate(sql);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 	/**
 	 * Method to add a person record to the database with the provided data.
@@ -205,14 +228,7 @@ public class SalesData {
 		try {
 			conn = DriverManager.getConnection(DatabaseInfo.URL, DatabaseInfo.USERNAME, DatabaseInfo.PASSWORD);
 			
-			String query = "SELECT Person.personId as personId from Person where personUuid = ?;";
-			PreparedStatement psQuery = conn.prepareStatement(query);
-			psQuery.setString(1, personUuid);
-			ResultSet rsQuery = psQuery.executeQuery();
-			
-			int personId = rsQuery.getInt("personId");
-			
-			psQuery.close();
+			int personId = getPersonIdFromUuid(personUuid);
 			
 			String insertEmail = "INSERT INTO Email(personId, email) values (?, ?);";
 			PreparedStatement psInsertEmail = conn.prepareStatement(insertEmail);
@@ -264,7 +280,7 @@ public class SalesData {
 			
 			int managerId = getPersonIdFromUuid(managerCode);
 
-			String insertStore = "INSERT INTO Store(storeCode, managerId, addressId) VALUES (?, ?, ?, ?);";
+			String insertStore = "INSERT INTO Store(storeCode, managerId, addressId) VALUES (?, ?, ?);";
 			PreparedStatement psInsertStore = conn.prepareStatement(insertStore);
 			psInsertStore.setString(1, storeCode);
 			psInsertStore.setInt(2, managerId);
@@ -280,6 +296,7 @@ public class SalesData {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+		
 
 	}
 
@@ -302,7 +319,7 @@ public class SalesData {
 			String insertItem = "INSERT INTO Item(itemCode, itemType, itemName, baseCost) values (?, ?, ?, ?);";
 			PreparedStatement psInsertItem = conn.prepareStatement(insertItem);
 			psInsertItem.setString(1, code);
-			psInsertItem.setString(2, type);
+			psInsertItem.setString(2, String.valueOf(type.charAt(0)));
 			psInsertItem.setString(3, name);
 			psInsertItem.setDouble(4, basePrice);
 			

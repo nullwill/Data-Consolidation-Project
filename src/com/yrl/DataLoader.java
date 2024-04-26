@@ -697,9 +697,9 @@ public class DataLoader {
 			throw new RuntimeException(e);
 		}
 
-		String query = "SELECT Item.itemCode, Item.itemName, Item.itemType, "
+		String query = "SELECT Item.itemCode, Item.itemName, Item.itemType, Item.baseCost, "
 				+ "		SaleItem.saleItemId, SaleItem.saleId, SaleItem.itemId, SaleItem.startDate,"
-				+ "     SaleItem.endDate, SaleItem.employeeId, SaleItem.baseCost, SaleItem.numGB,"
+				+ "     SaleItem.endDate, SaleItem.employeeId, SaleItem.numGB,"
 				+ "     SaleItem.numHours, SaleItem.numDays, SaleItem.phoneNumber " + "FROM Item "
 				+ "		LEFT JOIN SaleItem ON Item.itemId = SaleItem.itemId;";
 
@@ -715,10 +715,6 @@ public class DataLoader {
 				String itemCode = itemsRs.getString("itemCode");
 				String itemName = itemsRs.getString("itemName");
 				String itemType = itemsRs.getString("itemType");
-
-//				String startDate = itemsRs.getString("startDate");
-//				String endDate = itemsRs.getString("endDate");
-//				String employeeId = itemsRs.getString("employeeId");
 				Double baseCost = itemsRs.getDouble("baseCost");
 				Double gb = itemsRs.getDouble("numGB");
 				Double hours = itemsRs.getDouble("numHours");
@@ -969,7 +965,6 @@ public class DataLoader {
         return sales;
     }
 
-	
 	
 }
 
