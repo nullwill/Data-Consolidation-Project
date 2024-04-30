@@ -40,6 +40,15 @@ public class Store implements Comparable<Store>{
 		return sales;
 	}
 	
+	public Double getNetTotalOfStore() {
+		Double netTotal = 0.0;
+		for (Sale s : sales) {
+			netTotal += s.getSaleGrandTotal();
+		}
+		
+		return netTotal;
+	}
+	
 
 	@Override
 	public int compareTo(Store o) {

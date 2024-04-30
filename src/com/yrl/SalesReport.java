@@ -2,9 +2,9 @@ package com.yrl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 /**
  * This is the file that contains the methods to collect, organize, and output
@@ -34,11 +34,16 @@ public class SalesReport {
 						+ "| Summary Report - By Total                                                              |\n"
 						+ "+----------------------------------------------------------------------------------------+");
 		System.out.println("Invoice #  Store      Customer             Num Items          Tax            Total");
-	
+
 		List<Sale> salesList = new ArrayList<>(sales.values());
-		
-		Collections.sort(salesList);
-		
+
+		Collections.sort(salesList, new Comparator<Sale>() {
+			@Override
+			public int compare(Sale s1, Sale s2) {
+				return s2.getSaleGrandTotal().compareTo(s1.getSaleGrandTotal());
+			}
+		});
+
 		for (Sale s : salesList) {
 			Double totalTaxes = 0.0;
 			Double totalPrice = 0.0;
@@ -69,13 +74,36 @@ public class SalesReport {
 				+ "| Store Sales Summary Report                                     |\n"
 				+ "+----------------------------------------------------------------+\n"
 				+ "Store      Manager                        # Sales    Grand Total  ");
-	
+
+		List<Store> sortedStores = new ArrayList<>(stores.values());
+
+
 		
-		TreeMap<String, Store> sortedStores = new TreeMap<>(stores);
+		Collections.sort(sortedStores, new Comparator<Store>() {
+			@Override
+			public int compare(Store store1, Store store2) {
+				int comp = store1.getManager().getLastName().compareTo(store2.getManager().getLastName());
+				if (comp == 0) {
+					return store2.getNetTotalOfStore().compareTo(store1.getNetTotalOfStore());
+				} else {
+					return comp;
+				}
+			}
+		});
 		
-		for (Store s : sortedStores.values()) {
+		
+
+		for (Store s : sortedStores) {
 			Double total = 0.0;
 			List<Sale> storeSales = s.getSales();
+			
+			Collections.sort(storeSales, new Comparator<Sale>() {
+				@Override
+				public int compare(Sale s1, Sale s2) {
+					return s2.getSaleGrandTotal().compareTo(s1.getSaleGrandTotal());
+				}
+			});
+			
 			for (Sale sale : storeSales) {
 				List<Item> items = sale.getItems();
 				if (items != null) {
@@ -153,14 +181,11 @@ public class SalesReport {
 	}
 
 	public static void main(String args[]) {
-		String soldItemsFile = "data/SaleItems.csv";
 
 		HashMap<String, Person> people = DataLoader.getAllPeople();
 		HashMap<String, Store> stores = DataLoader.getAllStores();
 		HashMap<String, Item> items = DataLoader.getAllItems();
 		HashMap<String, Sale> sales = DataLoader.getAllSales();
-		
-//		DataLoader.loadSaleItemsData(soldItemsFile, items, sales, people);
 
 		printSummaryReport("output.txt", sales, people, items);
 		printStoresReport("output.txt", stores, people, sales);

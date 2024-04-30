@@ -17,18 +17,18 @@ import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 /**
  * Author(s): Will Aldag & Oliver Triana
  * 
- * This is the main driver that is used to parse the CSV files and
- * maps them into their corresponding objects. The file contains methods
- * that are used to convert the objects into a formatted XML and JSON output.
+ * This is the main driver that is used to parse the CSV files and maps them
+ * into their corresponding objects. The file contains methods that are used to
+ * convert the objects into a formatted XML and JSON output.
  */
 
 public class DataConverter {
-	
+
 	/**
-	 * This method is a general method to persist the object data and output
-	 * it into an JSON format. The method accepts a list of unspecified objects,
-	 * a root name, and an output filename. The method then outputs the objects,
-	 * formatted as JSON under the name provided by the user.
+	 * This method is a general method to persist the object data and output it into
+	 * an JSON format. The method accepts a list of unspecified objects, a root
+	 * name, and an output filename. The method then outputs the objects, formatted
+	 * as JSON under the name provided by the user.
 	 * 
 	 * @param list
 	 * @param head
@@ -40,9 +40,9 @@ public class DataConverter {
 		try {
 			pw = new PrintWriter(f);
 			ObjectMapper mapper = new ObjectMapper();
-			
+
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
-			
+
 			try {
 				String json = mapper.writeValueAsString(map.values());
 				pw.println(json);
@@ -54,12 +54,13 @@ public class DataConverter {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * This method is a general method to persist the object data and output
-	 * it into an XML format. The method accepts a list of unspecified objects,
-	 * a root name, and an output filename. The method then outputs the objects,
-	 * formatted as XML under the name provided by the user.
+	 * This method is a general method to persist the object data and output it into
+	 * an XML format. The method accepts a list of unspecified objects, a root name,
+	 * and an output filename. The method then outputs the objects, formatted as XML
+	 * under the name provided by the user.
+	 * 
 	 * @param list
 	 * @param root
 	 * @param outputFileName
@@ -69,13 +70,10 @@ public class DataConverter {
 		PrintWriter pw;
 		try {
 			pw = new PrintWriter(f);
-			XmlMapper mapper = XmlMapper
-					.builder()
-					.defaultUseWrapper(true)
-					.build();
+			XmlMapper mapper = XmlMapper.builder().defaultUseWrapper(true).build();
 			mapper.enable(SerializationFeature.INDENT_OUTPUT);
-			mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);			
-			
+			mapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+
 			try {
 				mapper.writeValue(f, map.values());
 			} catch (StreamWriteException e) {
@@ -85,23 +83,20 @@ public class DataConverter {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			pw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String args[]) throws JsonProcessingException, FileNotFoundException {
-		String itemFile   = "data/Items.csv";
-		
-		
-		String itemXml   = "output/Items.xml";
-		
-		HashMap<String, Item> items   = DataLoader.loadItemData(itemFile);
-		
+		String itemFile = "data/Items.csv";
+
+		HashMap<String, Item> items = CSVLoader.loadItemData(itemFile);
+
 		HashMap<String, Item> itemsByType = new HashMap<String, Item>();
-		
+
 		for (Item i : items.values()) {
 			if (i instanceof Product) {
 				itemsByType.put("product", i);
@@ -113,26 +108,6 @@ public class DataConverter {
 				itemsByType.put("dataPlan", i);
 			}
 		}
-		
-		File f = new File(itemXml);
-		PrintWriter pw = new PrintWriter(f);
-		XmlMapper xmlMapper = new XmlMapper();
-		
-		String xmlString = xmlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(itemsByType);
-		pw.println(xmlString);
-		
-//		pw.println(xmlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(items));
-		pw.close();
-		
-		DataLoader.getPersonData(1);
-//		persistJson(people, "persons", personsJson);
-//		persistJson(stores, "stores", storesJson);
-//		persistJson(items, "items", itemJson);
-//		
-//		persistXml(people, "person", personsXml);
-//		persistXml(stores, "store", storesXml);
-//		persistXml(items, "item", itemXml);
-//		
-		
+
 	}
 }
