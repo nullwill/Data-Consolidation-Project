@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This is the file that contains the methods to collect, organize, and output
@@ -77,8 +78,6 @@ public class SalesReport {
 
 		List<Store> sortedStores = new ArrayList<>(stores.values());
 
-
-		
 		Collections.sort(sortedStores, new Comparator<Store>() {
 			@Override
 			public int compare(Store store1, Store store2) {
@@ -90,20 +89,18 @@ public class SalesReport {
 				}
 			}
 		});
-		
-		
 
 		for (Store s : sortedStores) {
 			Double total = 0.0;
 			List<Sale> storeSales = s.getSales();
-			
+
 			Collections.sort(storeSales, new Comparator<Sale>() {
 				@Override
 				public int compare(Sale s1, Sale s2) {
 					return s2.getSaleGrandTotal().compareTo(s1.getSaleGrandTotal());
 				}
 			});
-			
+
 			for (Sale sale : storeSales) {
 				List<Item> items = sale.getItems();
 				if (items != null) {
@@ -180,6 +177,77 @@ public class SalesReport {
 		}
 	}
 
+	public static void printSalesByCustomer(HashMap<String, Sale> sales) {
+		System.out.println("+-------------------------------------------------------------------------+");
+		System.out.println("| Sales by Customer                                                       |");
+		System.out.println("+-------------------------------------------------------------------------+");
+		System.out.println("Sale       Store      Customer             Salesperson          Total     ");
+
+		SortedArrayList<Sale> sortedSales = new SortedArrayList<>(
+				Comparator.comparing(s -> s.getCustomer().getLastName()));
+		for (Sale s : sales.values()) {
+			sortedSales.add(s);
+		}
+		for (Sale sale : sortedSales) {
+			String saleCode = sale.getSaleCode();
+			String storeCode = sale.getStore().getStoreCode();
+			String customerName = sale.getCustomer().getName();
+			String salespersonName = sale.getSalesPerson().getName();
+			double total = sale.getSaleGrandTotal();
+			System.out.printf("%-10s%-11s%-21s%-20s$%10.2f%n", saleCode, storeCode, customerName, salespersonName,
+					total);
+		}
+		System.out.println("+-------------------------------------------------------------------------+");
+	}
+
+	public static void printSalesByTotal(HashMap<String, Sale> sales) {
+		System.out.println("+-------------------------------------------------------------------------+");
+		System.out.println("| Sales by Total                                                          |");
+		System.out.println("+-------------------------------------------------------------------------+");
+		System.out.println("Sale       Store      Customer             Salesperson          Total     ");
+
+		SortedArrayList<Sale> sortedSales = new SortedArrayList<>(
+				Comparator.comparing(Sale::getSaleGrandTotal).reversed());
+		for (Sale s : sales.values()) {
+			sortedSales.add(s);
+		}
+
+		for (Sale sale : sortedSales) {
+			String saleCode = sale.getSaleCode();
+			String storeCode = sale.getStore().getStoreCode();
+			String customerName = sale.getCustomer().getName();
+			String salespersonName = sale.getSalesPerson().getName();
+			double total = sale.getSaleGrandTotal();
+			System.out.printf("%-10s%-11s%-21s%-20s$%10.2f%n", saleCode, storeCode, customerName, salespersonName,
+					total);
+		}
+		System.out.println("+-------------------------------------------------------------------------+");
+	}
+
+	public static void printSalesByStore(HashMap<String, Sale> sales) {
+		System.out.println("+-------------------------------------------------------------------------+");
+		System.out.println("| Sales by Store                                                          |");
+		System.out.println("+-------------------------------------------------------------------------+");
+		System.out.println("Sale       Store      Customer             Salesperson          Total     ");
+
+		SortedArrayList<Sale> sortedSales = new SortedArrayList<>(
+				Comparator.comparing(s -> s.getStore().getStoreCode()));
+		for (Sale s : sales.values()) {
+			sortedSales.add(s);
+		}
+
+		for (Sale sale : sortedSales) {
+			String saleCode = sale.getSaleCode();
+			String storeCode = sale.getStore().getStoreCode();
+			String customerName = sale.getCustomer().getName();
+			String salespersonName = sale.getSalesPerson().getName();
+			double total = sale.getSaleGrandTotal();
+			System.out.printf("%-10s%-11s%-21s%-20s$%10.2f%n", saleCode, storeCode, customerName, salespersonName,
+					total);
+		}
+		System.out.println("+-------------------------------------------------------------------------+");
+	}
+
 	public static void main(String args[]) {
 
 		HashMap<String, Person> people = DataLoader.getAllPeople();
@@ -187,9 +255,13 @@ public class SalesReport {
 		HashMap<String, Item> items = DataLoader.getAllItems();
 		HashMap<String, Sale> sales = DataLoader.getAllSales();
 
-		printSummaryReport("output.txt", sales, people, items);
-		printStoresReport("output.txt", stores, people, sales);
-		printIndividualSalesData("output.txt", sales, people);
+		printSalesByCustomer(sales);
+		printSalesByTotal(sales);
+		printSalesByStore(sales);
+
+//		printSummaryReport("output.txt", sales, people, items);
+//		printStoresReport("output.txt", stores, people, sales);
+//		printIndividualSalesData("output.txt", sales, people);
 
 	}
 }
